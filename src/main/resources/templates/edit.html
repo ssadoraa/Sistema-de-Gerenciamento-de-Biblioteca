@@ -1,15 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cadastro de Livro</title>
 </head>
 <body>
-    <h1>Teste Cadastro</h1>
-    <form method="post">
-        titulo: <input type="text" value="" name="titulo">
+<h1>Cadastro de Livro</h1>
+<form method="post" th:action="@{/biblioteca}">
+    <div>
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+    </div>
+    <div>
+        <label for="editoraId">ID da Editora:</label>
+        <input type="number" id="editoraId" name="editoraId" required>
+    </div>
+    <div>
+        <label for="generoId">ID do Gênero:</label>
+        <input type="number" id="generoId" name="generoId" required>
+    </div>
+    <div>
+        <label for="autorId">ID do Autor:</label>
+        <input type="number" id="autorId" name="autorId" required>
+    </div>
+    <div>
+        <label for="ano">Ano:</label>
+        <input type="number" id="ano" name="ano" required>
+    </div>
+    <div>
+        <label for="edicao">Edição:</label>
+        <input type="text" id="edicao" name="edicao">
+    </div>
+    <div>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" required>
+    </div>
+    <div>
         <input type="submit" value="Salvar">
-    </form>
+    </div>
+</form>
 </body>
 </html>

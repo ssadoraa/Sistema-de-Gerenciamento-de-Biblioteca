@@ -7,14 +7,14 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table(name = "livro_teste")
+@Table(name = "livro")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class Livro {
     @Id
-    private long id;
+    private Long id;
     private String titulo;
     private Long editoraId;
     private Long generoId;
