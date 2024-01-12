@@ -23,9 +23,9 @@ create table editora (
 create table livro (
 	id BIGINT(20) NOT NULL,
     titulo VARCHAR(100) NOT NULL,
-    id_editora BIGINT(20),
-    id_genero BIGINT(20),
-    id_autor BIGINT(20),
+    editora_id BIGINT(20),
+    genero_id BIGINT(20),
+    autor_id BIGINT(20),
     ano INTEGER,
     edicao VARCHAR(100),
     quantidade INTEGER,
