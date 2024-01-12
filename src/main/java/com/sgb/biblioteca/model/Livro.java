@@ -1,31 +1,27 @@
 package com.sgb.biblioteca.model;
 
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-
 @Table(name = "livro_teste")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Livro {
     @Id
-    private Long id;
-
+    private long id;
     private String titulo;
+    private Long editoraId;
+    private Long generoId;
+    private Long autorId;
+    private Integer ano;
+    private String edicao;
+    private int quantidade;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
 }
 
