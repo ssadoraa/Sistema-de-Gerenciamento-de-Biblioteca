@@ -14,12 +14,12 @@ import org.springframework.data.relational.core.mapping.Table;
 @Setter
 public class Livro {
     @Id
-    private Long id;
+    private long id;
     private String titulo;
-    private Long editoraId;
-    private Long generoId;
-    private Long autorId;
-    private Integer ano;
+    private long editoraId;
+    private long generoId;
+    private long autorId;
+    private int ano;
     private String edicao;
     private int quantidade;
 
