@@ -1,19 +1,22 @@
 package com.sgb.biblioteca.service;
 
-import com.sgb.biblioteca.dao.BibliotecaDAO;
+import com.sgb.biblioteca.dao.LivroDAO;
 import com.sgb.biblioteca.model.Livro;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class BibliotecaService {
+public class LivroService {
 
-    private BibliotecaDAO bibliotecaDAO;
+    private LivroDAO livroDAO;
 
     public void save(Livro livro){
-        bibliotecaDAO.save(livro);
+        livroDAO.save(livro);
+    }
+
+    public Livro findLivroById(Long id){
+        return livroDAO.findById(id).orElse(null);
     }
 
 }

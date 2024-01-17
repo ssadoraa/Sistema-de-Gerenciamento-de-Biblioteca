@@ -3,26 +3,29 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Livro</title>
+    <title>Cadastrar Livro</title>
 </head>
 <body>
-<h1>Cadastro de Livro</h1>
-<form method="post" th:action="@{/biblioteca}">
+<h1>Cadastrar Livro</h1>
+<form method="post" th:action="@{/new}">
     <div>
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" required>
     </div>
     <div>
-        <label for="editoraId">ID da Editora:</label>
+        <label for="autorId">Autor:</label>
+        <select id="autorId" data-placeholder="Selecione um autor">
+    </div>
+    <!-- <div>
+        <label for="editoraId">Editora:</label>
         <input type="number" id="editoraId" name="editoraId" required>
     </div>
     <div>
-        <label for="generoId">ID do Gênero:</label>
-        <input type="number" id="generoId" name="generoId" required>
-    </div>
-    <div>
-        <label for="autorId">ID do Autor:</label>
-        <input type="number" id="autorId" name="autorId" required>
+        <label for="generoId">Gênero:</label>
+        <select id="generoId" name="generoId">
+            <option value="" disabled selected>Selecione um gênero</option>
+            <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}"></option>
+        </select>
     </div>
     <div>
         <label for="ano">Ano:</label>
@@ -38,7 +41,8 @@
     </div>
     <div>
         <input type="submit" value="Salvar">
-    </div>
+        <input type="submit" value="Cancelar">
+    </div> -->
 </form>
 </body>
 </html>
