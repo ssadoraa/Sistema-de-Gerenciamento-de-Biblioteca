@@ -1,14 +1,12 @@
 package com.sgb.biblioteca.service;
 
 import com.sgb.biblioteca.model.Genero;
-
-import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import org.springframework.stereotype.Service;
 import com.sgb.biblioteca.dao.GeneroDAO;
 import lombok.AllArgsConstructor;
-import lombok.val;
 
 @Service
 @AllArgsConstructor
@@ -17,9 +15,10 @@ public class GeneroService {
     private GeneroDAO generoDAO;
 
     public List<Genero> findAllGeneros(){
-        val generosIterable = generoDAO.findAll();
-        List<Genero> generosList = new ArrayList<>();
-        generosIterable.forEach(generosList::add);
+
+        Iterable<Genero> generosIterable = generoDAO.findAll();
+        List<Genero> generosList = StreamSupport.stream(generosIterable.spliterator(), false)
+                                        .collect(Collectors.toList());
         
         return generosList;
     }

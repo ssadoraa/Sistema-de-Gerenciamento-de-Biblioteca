@@ -20,6 +20,14 @@ public class LivroController {
     private LivroService livroService;
     private GeneroService generoService;
 
+    @GetMapping("/{id}")
+    public String get(@PathVariable Long id, Model model){
+        val livro = livroService.findLivroById(id);
+        model.addAttribute("livro", livro);
+
+        return "livro/get";
+    }
+
     @GetMapping("/new")
     public String edit(Model model){
         val generos = generoService.findAllGeneros();
@@ -33,13 +41,5 @@ public class LivroController {
     public String post(Livro livro){
         livroService.save(livro);
         return "livro/edit";
-    }
-
-    @GetMapping("/{id}")
-    public String get(@PathVariable Long id, Model model){
-        val livro = livroService.findLivroById(id);
-        model.addAttribute("livro", livro);
-
-        return "livro/get";
     }
 }
