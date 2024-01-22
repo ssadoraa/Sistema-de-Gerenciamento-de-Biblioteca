@@ -13,9 +13,7 @@ public class AutorService {
     private AutorDAO autorDAO;
 
     public List<Autor> findAutorByQuery(String nome){
-
-        List<Autor> autores = autorDAO.p(nome);
-
+        List<Autor> autores = autorDAO.autorQuery(nome);
         return autores;
     }
     

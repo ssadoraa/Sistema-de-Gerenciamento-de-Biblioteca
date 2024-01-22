@@ -11,5 +11,5 @@ public interface AutorDAO extends CrudRepository<Autor, Long> {
    
     @Query("SELECT * FROM biblioteca.autor a "
            + " WHERE a.nome LIKE :nome")
-    List<Autor> p(String nome);
+    List<Autor> autorQuery(String nome);
 }

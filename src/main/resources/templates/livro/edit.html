@@ -20,11 +20,15 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     </div>
     <div>
         <label for="autorId">Autor:</label>
-        <select id="autorId" name="autorId" style="width: 180px;"></select>
+        <select id="autorId" name="autorId" style="width: 200px;" required>
+            <option value="" disabled selected>Selecione um(a) autor(a)</option>
+        </select>
     </div>
     <div>
         <label for="editoraId">Editora:</label>
-        <input type="number" id="editoraId" name="editoraId" required>
+        <select id="editoraId" name="editoraId" style="width: 180px;" required>
+            <option value="" disabled selected>Selecione uma editora</option>
+        </select>
     </div>
     <div>
         <label for="generoId">Gênero:</label>
@@ -47,7 +51,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     </div>
     <div>
         <input type="submit" value="Salvar">
-        <input type="submit" value="Cancelar">
+        <input type="reset" value="Cancelar">
     </div>
 </form>
 </body>

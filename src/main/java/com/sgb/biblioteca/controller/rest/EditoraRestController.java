@@ -1,27 +1,27 @@
 package com.sgb.biblioteca.controller.rest;
 
 import org.springframework.web.bind.annotation.RestController;
-import com.sgb.biblioteca.model.Autor;
-import com.sgb.biblioteca.service.AutorService;
+import com.sgb.biblioteca.model.Editora;
+import com.sgb.biblioteca.service.EditoraService;
+
 import lombok.AllArgsConstructor;
-import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/autores")
-public class AutorRestController {
+@RequestMapping("/api/editoras")
+public class EditoraRestController {
 
-    private final AutorService autorService;
+    private final EditoraService editoraService;
 
     @GetMapping
     @ResponseBody
-    public List<Autor> findByQuery(@RequestParam String busca){
-        return autorService.findAutorByQuery(busca);
-    }
-
+    public List<Editora> findByQuery(@RequestParam String busca) {
+        return editoraService.findEditoraByQuery(busca);
+    }    
 }
