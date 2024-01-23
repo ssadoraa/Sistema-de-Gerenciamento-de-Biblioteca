@@ -18,12 +18,12 @@ public class BibliotecaController {
 
     @GetMapping("/biblioteca")
     public String get(){
-        return "edit";
+        return "teste";
     }
 
     @PostMapping("/biblioteca")
     public String post(Livro livro){
         bibliotecaService.save(livro);
-        return "edit";
+        return "teste";
     }
 }
