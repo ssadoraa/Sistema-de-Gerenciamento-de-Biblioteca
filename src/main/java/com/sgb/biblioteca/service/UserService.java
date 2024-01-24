@@ -13,19 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class UserService {
-
     private UserDAO userDAO;
-
     private PasswordEncoder passwordEncoder;
-
-//    @PostConstruct
-//    public void postConstruct(){
-//        UserModel user = new UserModel();
-//        user.setRole(UserRole.ADMIN);
-//        user.setUsername("admin");
-//        user.setPassword(passwordEncoder.encode("abc"));
-//        userDAO.save(user);
-//    }
 
     public void save(UserModel user){
         user.setRole(UserRole.USER);
