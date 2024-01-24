@@ -4,6 +4,6 @@ import com.sgb.biblioteca.model.Livro;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface BibliotecaDAO extends CrudRepository<Livro, Long> {
+public interface LivroDAO extends CrudRepository<Livro, Long> {
 }
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Livro</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
+    <script src="../../static/js/livroScripts.js" th:src="@{/js/livroScripts.js}"></script>
+</head>
+<body>
+<h1>Cadastrar Livro</h1>
+<form method="post" th:action="@{/new}">
+    <div>
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+    </div>
+    <div>
+        <label for="autorId">Autor:</label>
+        <select id="autorId" name="autorId" style="width: 200px;" required>
+            <option value="" disabled selected>Selecione um(a) autor(a)</option>
+        </select>
+    </div>
+    <div>
+        <label for="editoraId">Editora:</label>
+        <select id="editoraId" name="editoraId" style="width: 180px;" required>
+            <option value="" disabled selected>Selecione uma editora</option>
+        </select>
+    </div>
+    <div>
+        <label for="generoId">Gênero:</label>
+        <select id="generoId" name="generoId">
+            <option value="" disabled selected>Selecione um gênero</option>
+            <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="ano">Ano:</label>
+        <input type="number" id="ano" name="ano" required>
+    </div>
+    <div>
+        <label for="edicao">Edição:</label>
+        <input type="text" id="edicao" name="edicao">
+    </div>
+    <div>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" required>
+    </div>
+    <div>
+        <input type="submit" value="Salvar">
+        <input type="reset" value="Cancelar">
+    </div>
+</form>
+</body>
+</html>
