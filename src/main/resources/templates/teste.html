@@ -8,20 +8,21 @@
 
 </head>
 <body>
-<h1>Cadastro de Livro</h1>
-<form method="post" th:action="@{/biblioteca}">
-    <div>
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" required>
-    </div>
-    <div>
-        <label for="quantidade">Quantidade:</label>
-        <input type="number" id="quantidade" name="quantidade" required>
-    </div>
-    <div>
-        <input type="submit" class="btn btn-primary" value="Salvar">
-    </div>
-</form>
-<script src="../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <h1>Cadastro de Livro</h1>
+    <form method="post" th:action="@{/biblioteca}">
+        <div>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        </div>
+        <div>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Salvar">
+        </div>
+    </form>
+    <script src="../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
 </body>
 </html>
