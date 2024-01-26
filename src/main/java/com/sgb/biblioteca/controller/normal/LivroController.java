@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller 
@@ -44,5 +45,13 @@ public class LivroController {
     public String post(Livro livro){
         livroService.save(livro);
         return "livro/edit";
+    }
+
+    @GetMapping()
+    public ModelAndView list(){
+        val livros = livroService.listagemLivros();
+
+        return new ModelAndView("livro/list")
+            .addObject("livros", livros);
     }
 }
