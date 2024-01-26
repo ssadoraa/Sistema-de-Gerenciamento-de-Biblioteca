@@ -1,8 +1,6 @@
 package com.sgb.biblioteca.controller.normal;
 
 import com.sgb.biblioteca.model.Livro;
-import com.sgb.biblioteca.service.AutorService;
-import com.sgb.biblioteca.service.EditoraService;
 import com.sgb.biblioteca.service.GeneroService;
 import com.sgb.biblioteca.service.LivroService;
 
@@ -10,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.val;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +26,7 @@ public class LivroController {
 
     @GetMapping("/{id}")
     public ModelAndView get(@PathVariable Long id){
-        val livro = livroService.findLivroById(id);
+        val livro = livroService.findLivroComDependenciaById(id);
 
         return new ModelAndView("livro/get")
             .addObject("livro", livro);
