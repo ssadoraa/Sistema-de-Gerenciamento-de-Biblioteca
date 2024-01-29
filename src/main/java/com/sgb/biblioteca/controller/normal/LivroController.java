@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller 
@@ -32,17 +33,27 @@ public class LivroController {
     }
 
     @GetMapping("/new")
-    public String edit(Model model){
-        val generos = generoService.findAllGeneros();
-
-        model.addAttribute("generos", generos);
-        
-        return "livro/edit";
+    public ModelAndView novo(){
+        return edit(Livro.empty());
+    }
+    
+    @GetMapping("/{id}/edit")
+    public ModelAndView edit(@PathVariable Long id){
+        val livro = livroService.findLivroById(id);
+        return edit(livro);
     }
 
     @PostMapping("/new")
     public String post(Livro livro){
         livroService.save(livro);
         return "livro/edit";
+    }
+
+    private ModelAndView edit(Livro livro){
+        val generos = generoService.findAllGeneros();
+
+        return new ModelAndView("livro/edit")
+            .addObject("livro", livro)
+            .addObject("generos", generos);
     }
 }

@@ -12,11 +12,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <script src="../../static/js/livroScripts.js" th:src="@{/js/livroScripts.js}"></script>
 </head>
 <body>
-<h1>Cadastrar Livro</h1>
+
+<h1 th:text="${(livro.id == null) ? 'Cadastrar Livro' : 'Editar Livro'}">Cadastro de Livro</h1>
+
 <form method="post" th:action="@{/livro/new}">
+
+    <input type="hidden" name="id" th:value="${livro.id}">
+
     <div>
         <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" required>
+        <input type="text" id="titulo" name="titulo" th:value="${livro.titulo}" required>
     </div>
     <div>
         <label for="autorId">Autor:</label>
@@ -34,20 +39,24 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         <label for="generoId">Gênero:</label>
         <select id="generoId" name="generoId">
             <option value="" disabled selected>Selecione um gênero</option>
-            <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}"></option>
+            <option th:each="genero : ${generos}" 
+                    th:value="${genero.id}" 
+                    th:text="${genero.nome}"
+                    th:selected="${genero.id == livro.generoId}">
+            </option>
         </select>
     </div>
     <div>
         <label for="ano">Ano:</label>
-        <input type="number" id="ano" name="ano" required>
+        <input type="number" id="ano" name="ano" th:value="${livro.ano}" required>
     </div>
     <div>
         <label for="edicao">Edição:</label>
-        <input type="text" id="edicao" name="edicao">
+        <input type="text" id="edicao" name="edicao" th:value="${livro.edicao}">
     </div>
     <div>
         <label for="quantidade">Quantidade:</label>
-        <input type="number" id="quantidade" name="quantidade" required>
+        <input type="number" id="quantidade" name="quantidade" th:value="${livro.quantidade}" required>
     </div>
     <div>
         <input type="submit" value="Salvar">
