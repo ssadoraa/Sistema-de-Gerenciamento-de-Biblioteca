@@ -19,4 +19,8 @@ public class EditoraService {
         List<Editora> editoras = editoraDAO.editoraQuery(nome);
         return editoras;
     }
+
+    public List<Editora> listagemEditoras(){
+        return editoraDAO.listagemEditora();
+    }
 }
