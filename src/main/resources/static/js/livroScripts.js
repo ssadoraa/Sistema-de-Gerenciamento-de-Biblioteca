@@ -1,7 +1,8 @@
 $(document).ready(function() {
     $('#autorId').select2({
+        minimumInputLength: 3,
         ajax: {
-            url: '/api/autores',
+            url: '/biblioteca/api/autores',
             data: function (params) {
                 return {
                     busca: params.term,
@@ -21,8 +22,9 @@ $(document).ready(function() {
     });
 
     $('#editoraId').select2({
+        minimumInputLength: 3,
         ajax: {
-            url: '/api/editoras',
+            url: '/biblioteca/api/editoras',
             data: function (params) {
                 return {
                     busca: params.term,
