@@ -19,6 +19,15 @@ public class EditoraService {
         return editoraDAO.findById(id).orElse(null);
     }
 
+    public void save(Editora editora){
+        editora.limpaFormatacao();
+        editoraDAO.save(editora);
+    }
+
+    public Editora findById(Long id){
+        return editoraDAO.findById(id).orElse(null);
+    }
+
     public List<Editora> findEditoraByQuery(String nome){
         List<Editora> editoras = editoraDAO.editoraQuery(nome);
         return editoras;
