@@ -3,7 +3,7 @@ package com.sgb.biblioteca.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
+import lombok.val;
 import com.sgb.biblioteca.dao.EditoraDAO;
 import com.sgb.biblioteca.model.Editora;
 
@@ -26,6 +26,13 @@ public class EditoraService {
 
     public Editora findById(Long id){
         return editoraDAO.findById(id).orElse(null);
+    }
+
+    public Editora findByIdFormatado(Long id){
+        val editora = editoraDAO.findById(id).orElse(null);
+        editora.setCnpj(editora.formataCNPJ());
+        editora.setTelefone(editora.formataTelefone());
+        return editora;
     }
 
     public List<Editora> findEditoraByQuery(String nome){

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizar Editora</title>
+    
+    <link href="../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    
+    
+</head>
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <div class="container">
+        <h1>Visualizar Editora</h1>
+        <p></p>
+        <form class="container">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="nome">Nome:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="nome" name="nome" th:value="${editora.nome}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="endereco">Endereço:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="endereco" name="endereco" th:value="${editora.endereco}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="cnpj">CNPJ:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="cnpj" name="cnpj"  th:value="${editora.cnpj}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="nome">Telefone:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="telefone" name="telefone" th:value="${editora.telefone}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="descricao">Descrição:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control-plaintext auto-resize" id="descricao" th:text="${editora.descricao}" readonly></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="mb-3 text-end">
+            <a type="submit" class="btn btn-dark">Editar</a>
+            <a class="voltar btn btn-light" href="#" title="Voltar a listagem de editoras">Voltar</a>
+        </div>
+    </div>
+
+<script src="../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+<script src="../../static/js/editora/mascaraInput.js" th:src="@{/js/editora/mascaraInput.js}"></script>
+
+</body>
+</html>
