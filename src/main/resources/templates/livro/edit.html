@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Livro</title>
-    
+
     <link href="../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
-    
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    
+
 </head>
 <body>
-    <div th:replace="~{ layout/navbar :: navbar}"></div>
+<div th:replace="~{ layout/navbar :: navbar}"></div>
 
-    <h1>Cadastrar Livro</h1>
+<div class="container">
+    <h1 class="my-4">Cadastrar Livro</h1>
     <form method="post" th:action="@{/new}">
-        <div>
-            <label for="titulo">Título:</label>
-            <input type="text" id="titulo" name="titulo" required>
+        <div class="form-group mb-3 row">
+            <label class="col-sm-2 col-form-label" for="titulo">Título:</label>
+            <div class="col-sm-10">
+                <input type="text" id="titulo" name="titulo" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group mb-3 row">
+            <label class="col-sm-2 col-form-label" for="autorId">Autor:</label>
+            <div class="col-sm-10">
+                <select id="autorId" name="autorId" class="form-control" required>
+                    <option value="" disabled selected>Selecione um(a) autor(a)</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group mb-3 row">
+            <label class="col-sm-2 col-form-label" for="editoraId">Editora:</label>
+            <div class="col-sm-10 select2-bootstrap-prepend">
+                <select id="editoraId" name="editoraId" class="form-control" required>
+                    <option value="" disabled selected>Selecione uma editora</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group mb-3 row">
+            <label class="col-sm-2 col-form-label" for="generoId">Gênero:</label>
+            <div class="col-sm-10 select2-bootstrap-prepend">
+                <select id="generoId" name="generoId" class="form-control">
+                    <option value="" disabled selected>Selecione um gênero</option>
+                    <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group mb-3 row">
+            <label class="col-sm-2 col-form-label" for="ano">Ano:</label>
+            <div class="col-sm-10">
+                <input type="number" id="ano" name="ano" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group mb-3 row">
+            <label class="col-sm-2 col-form-label" for="edicao">Edição:</label>
+            <div class="col-sm-10">
+                <input type="text" id="edicao" name="edicao" class="form-control">
+            </div>
+        </div>
+        <div class="form-group mb-3 row">
+            <label class="col-sm-2 col-form-label" for="quantidade">Quantidade:</label>
+            <div class="col-sm-10">
+                <input type="number" id="quantidade" name="quantidade" class="form-control" required>
+            </div>
         </div>
         <div>
-            <label for="autorId">Autor:</label>
-            <select id="autorId" name="autorId" style="width: 200px;" required>
-                <option value="" disabled selected>Selecione um(a) autor(a)</option>
-            </select>
+            <input type="submit" value="Salvar" class="btn btn-primary">
+            <input type="reset" value="Cancelar" class="btn btn-secondary">
         </div>
-        <div>
-            <label for="editoraId">Editora:</label>
-            <select id="editoraId" name="editoraId" style="width: 180px;" required>
-                <option value="" disabled selected>Selecione uma editora</option>
-            </select>
-        </div>
-        <div>
-            <label for="generoId">Gênero:</label>
-            <select id="generoId" name="generoId">
-                <option value="" disabled selected>Selecione um gênero</option>
-                <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}"></option>
-            </select>
-        </div>
-        <div>
-            <label for="ano">Ano:</label>
-            <input type="number" id="ano" name="ano" required>
-        </div>
-        <div>
-            <label for="edicao">Edição:</label>
-            <input type="text" id="edicao" name="edicao">
-        </div>
-        <div>
-            <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" name="quantidade" required>
-        </div>
-        <div>
-            <input type="submit" value="Salvar">
-            <input type="reset" value="Cancelar">
-        </div>
-</form>
+    </form>
+</div>
 
 <script src="../../static/js/biblioteca/livroScripts.js" th:src="@{/js/biblioteca/livroScripts.js}"></script>
 <script src="../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>

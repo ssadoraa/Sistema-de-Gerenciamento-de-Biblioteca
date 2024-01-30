@@ -46,10 +46,6 @@ public class EditoraController {
             .addObject("editora", editora);
     }
     
-
-
-    private EditoraService editoraService;
-    
     @GetMapping("/new")    
     public ModelAndView novo(){
         return edit(Editora.empty());
