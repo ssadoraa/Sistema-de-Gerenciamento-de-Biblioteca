@@ -14,7 +14,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table(name = "editora")
 public class Editora {
     @Id
-    private long id;
+    private Long id;
     private String nome;
     private String endereco;
     private String cnpj;
@@ -41,6 +41,20 @@ public class Editora {
                 numTelefone.substring(0, 2),
                 numTelefone.substring(2, 7),
                 numTelefone.substring(7));
+    }
+   
+    public static Editora empty(){
+        return new Editora(null, "", "", "", "", "");
+    }
+
+    public void limpaFormatacao() {
+        if (cnpj != null) {
+            cnpj = cnpj.replaceAll("[^0-9]", "");
+        }
+        
+        if (telefone != null) {
+            telefone = telefone.replaceAll("[^0-9]", "");
+        }
     }
 
 }
