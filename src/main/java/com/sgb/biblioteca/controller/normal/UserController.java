@@ -1,4 +1,4 @@
-package com.sgb.biblioteca.controller;
+package com.sgb.biblioteca.controller.normal;
 
 import com.sgb.biblioteca.model.UserModel;
 import com.sgb.biblioteca.service.UserService;

@@ -4,6 +4,8 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,9 +13,15 @@ import org.springframework.data.relational.core.mapping.Table;
 public class UserModel {
     @Id
     private long id;
-    private String username;
-    private String password;
-    private UserRole role;
+    @NonNull private String username;
+    @NonNull private String password;
+    @NonNull private String cpf;
+    @NonNull private LocalDate dataNascimento;
+    @NonNull private String sexo;
+    @NonNull private String endereco;
+    @NonNull private String telefone;
+    @NonNull private String email;
+    @NonNull private UserRole role;
 
     public String getUsername() {
         return username;
