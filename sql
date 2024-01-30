@@ -34,3 +34,26 @@ create table livro (
     FOREIGN KEY(id_genero) REFERENCES genero(id),
     FOREIGN KEY(id_autor) REFERENCES autor(id)
 );
+
+
+
+insert into genero (id, nome)
+values
+(1, "Aventura"),
+(2, "Autoajuda"),
+(3, "Biografia"),
+(4, "Conto"),
+(5, "Crônica"),
+(6, "Drama"),
+(7, "Didático"),
+(8, "Ficção científica"),
+(9, "Fantasia"),
+(10, "História em quadrinhos"),
+(11, "Horror"),
+(12, "Mistério"),
+(13, "Poesia"),
+(14, "Policial"),
+(15, "Romance"),
+(16, "Suspense"),
+(17, "Terror"),
+(18, "Viagem");
