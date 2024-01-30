@@ -5,6 +5,7 @@ import com.sgb.biblioteca.model.Livro;
 import com.sgb.biblioteca.model.comDependencias.LivroComDependencia;
 import lombok.AllArgsConstructor;
 import java.util.Optional;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -51,6 +52,10 @@ public class LivroService {
                     throw new RuntimeException("Erro ao obter dependencias do livro " + e);
                 }
             });
+    }
+
+    public List<Livro> listagemLivros(){
+        return livroDAO.listagemLivros();
     }
 
 }

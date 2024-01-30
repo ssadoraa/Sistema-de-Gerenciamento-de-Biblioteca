@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizar Livro</title>
+    
+    <link href="../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../static/css/livro/list.css" th:href="@{/css/livro/list.css}" rel="stylesheet" media="screen" />
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
+</head>
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <div class="container">
+        <h2>Listagem de Livros</h2>
+        <p></p>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col">Título</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-light" th:each="livro : ${livros}">
+                        <td><span th:text="${livro.titulo}">Exemplo de título</span></td>
+                        <td><span th:text="${livro.autorId}">Exemplo de Autor</span></td>
+                        <td><span th:text="${livro.quantidade}">10</span></td>
+                        <td>
+                            <a class="btn btn-info btn-sm" title="Ver livro"
+                            href="get.html">
+                            Ver
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>     
+        </div>
+    </div>
+
+    <div th:replace="~{ layout/paginacao :: paginacao}"></div>
+
+<script src="../../static/js/biblioteca/livroScripts.js" th:src="@{/js/biblioteca/livroScripts.js}"></script>
+<script src="../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+<script src="../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+
+</body>
+</html>

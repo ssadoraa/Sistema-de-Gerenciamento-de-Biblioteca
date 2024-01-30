@@ -46,4 +46,12 @@ public class LivroController {
         
         return "livro/edit";
     }
+
+    @GetMapping()
+    public ModelAndView list(){
+        val livros = livroService.listagemLivros();
+
+        return new ModelAndView("livro/list")
+            .addObject("livros", livros);
+    }
 }
