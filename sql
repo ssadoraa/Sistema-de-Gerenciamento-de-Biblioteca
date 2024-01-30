@@ -35,7 +35,18 @@ create table livro (
     FOREIGN KEY(id_autor) REFERENCES autor(id)
 );
 
-
+create table user (
+	id BIGINT(20) NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(1000) NOT NULL,
+    role VARCHAR(100) NOT NULL,
+    cpf VARCHAR(20) NOT NULL,
+    data_nascimento date NOT NULL,
+    sexo VARCHAR(20) NOT NULL,
+    endereco VARCHAR(1000) NOT NULL,
+    telefone VARCHAR(100) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+);
 
 insert into genero (id, nome)
 values
