@@ -1,6 +1,12 @@
 package com.sgb.biblioteca.controller.normal;
 
 import org.springframework.stereotype.Controller;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
+import lombok.val;
+import com.sgb.biblioteca.service.EditoraService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.sgb.biblioteca.service.EditoraService;
 import lombok.val;
@@ -22,6 +28,15 @@ import org.springframework.web.bind.annotation.*;
 public class EditoraController {
     
     private EditoraService editoraService;
+
+
+    @GetMapping()
+    public ModelAndView list() {
+        val editoras = editoraService.listagemEditoras();
+        return new ModelAndView("editora/list")
+            .addObject("editoras", editoras);
+    }
+    
 
     @GetMapping("{id}")
     public ModelAndView get(@PathVariable Long id) {
@@ -56,5 +71,4 @@ public class EditoraController {
         return new ModelAndView("editora/edit")
             .addObject("editora", editora);
     }
-
 }

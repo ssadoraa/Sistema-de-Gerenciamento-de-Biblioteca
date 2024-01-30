@@ -40,4 +40,8 @@ public class EditoraService {
         return editoras;
     }
 
+    public List<Editora> listagemEditoras(){
+        return editoraDAO.listagemEditora();
+    }
+
 }

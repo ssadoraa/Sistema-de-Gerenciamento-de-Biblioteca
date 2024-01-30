@@ -12,4 +12,8 @@ public interface EditoraDAO extends CrudRepository<Editora, Long> {
     @Query("SELECT * FROM biblioteca.editora e "
            + " WHERE e.nome LIKE :nome")
     List<Editora> editoraQuery(String nome);
+
+    @Query("SELECT * FROM biblioteca.editora e "
+           + "ORDER BY e.nome;")
+    List<Editora> listagemEditora();
 }
