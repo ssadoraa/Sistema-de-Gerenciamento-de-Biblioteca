@@ -12,6 +12,10 @@ public class AutorService {
 
     private AutorDAO autorDAO;
 
+    public Autor findById(Long id){
+        return autorDAO.findById(id).orElse(null);
+    }
+
     public List<Autor> findAutorByQuery(String nome){
         List<Autor> autores = autorDAO.autorQuery(nome);
         return autores;

@@ -19,7 +19,7 @@ public class Editora {
     private String endereco;
     private String cnpj;
     private String telefone;
-    private String desricao;
+    private String descricao;
 
 }
 

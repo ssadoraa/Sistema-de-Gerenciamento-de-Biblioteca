@@ -14,6 +14,10 @@ public class GeneroService {
     
     private GeneroDAO generoDAO;
 
+    public Genero findById(Long id){
+        return generoDAO.findById(id).orElse(null);
+    }
+
     public List<Genero> findAllGeneros(){
 
         Iterable<Genero> generosIterable = generoDAO.findAll();

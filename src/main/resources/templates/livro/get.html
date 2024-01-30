@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizar Livro</title>
+    
+    <link href="../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
+</head>
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <div class="container">
+        <h2>Visualizar Livro</h2>
+        <p></p>
+        <form class="container">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="titulo">Título:</label>
+                <div class="col-sm-10">
+                    <input th:value="${livro.titulo}" id="titulo" class="form-control-plaintext" type="text"
+                            readonly value="Livro de teste">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="autorId">Autor:</label>
+                <div class="col-sm-10">
+                    <input th:value="${livro.autor.nome}" id="autorId" class="form-control-plaintext" type="text"
+                            readonly value="Autor de teste">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="editoraId">Editora:</label>
+                <div class="col-sm-10">
+                    <input th:value="${livro.editora.nome}" id="editoraId" class="form-control-plaintext" type="text"
+                            readonly value="Editora de teste">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="generoId">Gênero:</label>
+                <div class="col-sm-10">
+                    <input th:value="${livro.genero.nome}" id="generoId" class="form-control-plaintext" type="text"
+                            readonly value="Gênero de teste">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="ano">Ano:</label>
+                <div class="col-sm-10">
+                    <input th:value="${livro.ano}" id="ano" class="form-control-plaintext" type="text"
+                            readonly value="Ano de teste">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="edicao">Edição:</label>
+                <div class="col-sm-10">
+                    <input th:value="${livro.edicao}" id="edicao" class="form-control-plaintext" type="text"
+                            readonly value="Edição de teste">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="quantidade">Quantidade:</label>
+                <div class="col-sm-10">
+                    <input th:value="${livro.quantidade}" id="quantidade" class="form-control-plaintext" type="text"
+                            readonly value="Quantidade de teste">
+                </div>
+            </div>
+        </form>
+        <div class="mb-3 text-end">
+            <a type="submit" class="btn btn-dark">Editar</a>
+            <a class="voltar btn btn-light" href="#" title="Voltar a listagem de editais de bolsa">Voltar</a>
+        </div>
+    </div>
+
+<script src="../../static/js/biblioteca/livroScripts.js" th:src="@{/js/biblioteca/livroScripts.js}"></script>
+<script src="../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+<script src="../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+
+</body>
+</html>

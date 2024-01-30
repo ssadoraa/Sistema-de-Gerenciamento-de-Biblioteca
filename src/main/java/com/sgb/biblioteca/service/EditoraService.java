@@ -14,9 +14,14 @@ import lombok.AllArgsConstructor;
 public class EditoraService {
     
     private EditoraDAO editoraDAO;
+    
+    public Editora findById(Long id) {
+        return editoraDAO.findById(id).orElse(null);
+    }
 
     public List<Editora> findEditoraByQuery(String nome){
         List<Editora> editoras = editoraDAO.editoraQuery(nome);
         return editoras;
     }
+
 }
