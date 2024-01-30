@@ -15,16 +15,12 @@ public class EditoraService {
     
     private EditoraDAO editoraDAO;
     
-    public Editora findById(Long id) {
-        return editoraDAO.findById(id).orElse(null);
-    }
-
     public void save(Editora editora){
         editora.limpaFormatacao();
         editoraDAO.save(editora);
     }
 
-    public Editora findById(Long id){
+    public Editora findById(Long id) {
         return editoraDAO.findById(id).orElse(null);
     }
 

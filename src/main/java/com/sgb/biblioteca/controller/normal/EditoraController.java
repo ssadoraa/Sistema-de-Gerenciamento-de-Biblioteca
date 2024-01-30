@@ -7,18 +7,8 @@ import lombok.val;
 import com.sgb.biblioteca.service.EditoraService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.RequestMapping;
-import com.sgb.biblioteca.service.EditoraService;
-import lombok.val;
-import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ModelAndView;
 import com.sgb.biblioteca.model.Editora;
-import com.sgb.biblioteca.service.EditoraService;
-import lombok.val;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -37,7 +27,6 @@ public class EditoraController {
             .addObject("editoras", editoras);
     }
     
-
     @GetMapping("{id}")
     public ModelAndView get(@PathVariable Long id) {
         val editora = editoraService.findByIdFormatado(id);
