@@ -33,6 +33,16 @@ public class LivroController {
     }
 
     @GetMapping("/new")
+    public ModelAndView novo(){
+        return edit(Livro.empty());
+    }
+    
+    @GetMapping("/{id}/edit")
+    public ModelAndView edit(@PathVariable Long id) {
+        val livro = livroService.findLivroById(id);
+        return edit(livro);
+    }
+
     public ModelAndView edit(){
         val generos = generoService.findAllGeneros();
 
@@ -45,6 +55,14 @@ public class LivroController {
         livroService.save(livro);
         
         return "livro/edit";
+    }
+
+    private ModelAndView edit(Livro livro){
+        val generos = generoService.findAllGeneros();
+
+        return new ModelAndView("livro/edit")
+            .addObject("livro", livro)
+            .addObject("generos", generos);
     }
 
     @GetMapping()
