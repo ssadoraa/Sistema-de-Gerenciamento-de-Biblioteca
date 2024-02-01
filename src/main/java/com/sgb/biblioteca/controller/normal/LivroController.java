@@ -13,24 +13,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller 
 @AllArgsConstructor
 @RequestMapping("/livro")
 public class LivroController {
-
+    
     private LivroService livroService;
-
+    
     private GeneroService generoService;
-
+    
+    @GetMapping()
+    public ModelAndView list(){
+        val livros = livroService.listagemLivros();
+    
+        return new ModelAndView("biblioteca/livro/list")
+            .addObject("livros", livros);
+    }
+    
+    
     @GetMapping("/{id}")
     public ModelAndView get(@PathVariable Long id){
         val livro = livroService.findLivroComDependenciaById(id);
 
-        return new ModelAndView("livro/get")
+        return new ModelAndView("biblioteca/livro/get")
             .addObject("livro", livro);
     }
+
 
     @GetMapping("/new")
     public ModelAndView novo(){
@@ -42,34 +53,23 @@ public class LivroController {
         val livro = livroService.findLivroById(id);
         return edit(livro);
     }
-
-    public ModelAndView edit(){
-        val generos = generoService.findAllGeneros();
-
-        return new ModelAndView("livro/edit")
-            .addObject("generos", generos);
-    }
-
-    @PostMapping("/new")
-    public String post(Livro livro){
-        livroService.save(livro);
-        
-        return "livro/edit";
-    }
-
+    
     private ModelAndView edit(Livro livro){
         val generos = generoService.findAllGeneros();
-
-        return new ModelAndView("livro/edit")
+        
+        return new ModelAndView("biblioteca/livro/edit")
             .addObject("livro", livro)
             .addObject("generos", generos);
     }
 
-    @GetMapping()
-    public ModelAndView list(){
-        val livros = livroService.listagemLivros();
 
-        return new ModelAndView("livro/list")
-            .addObject("livros", livros);
+    @PostMapping("/new")
+    public String post(Livro livro, RedirectAttributes redirectAttributes){
+        livroService.save(livro);
+        
+        redirectAttributes.addAttribute("id", livro.getId());
+        
+        return "redirect:/livro/{id}";
     }
+
 }

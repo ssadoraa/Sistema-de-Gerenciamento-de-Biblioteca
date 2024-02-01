@@ -5,14 +5,13 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <meta charset="UTF-8">
     <title>Visualizar Editora</title>
     
-    <link href="../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
-    
+    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />   
     
 </head>
 <body>
     <div th:replace="~{ layout/navbar :: navbar}"></div>
-    <div class="container">
-        <h1>Visualizar Editora</h1>
+    <div class="container mt-5">
+        <h2>Visualizar Editora</h2>
         <p></p>
         <form class="container">
             <div class="mb-3 row">
@@ -47,13 +46,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             </div>
         </form>
         <div class="mb-3 text-end">
-            <a type="submit" class="btn btn-dark">Editar</a>
-            <a class="voltar btn btn-light" href="#" title="Voltar a listagem de editoras">Voltar</a>
+            <a type="submit" class="btn btn-primary" title="Editar Editora"
+               href="edit.html" th:href="@{/editora/{id}/edit(id=${editora.id})}"
+            >Editar</a>
+            <a class="voltar btn btn-secondary" href="#" title="Voltar a listagem de editoras" th:href="@{/editora}">Voltar</a>
         </div>
     </div>
 
-<script src="../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
-<script src="../../static/js/editora/mascaraInput.js" th:src="@{/js/editora/mascaraInput.js}"></script>
+<script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+<script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+<script src="../../../static/js/editora/mascaraInput.js" th:src="@{/js/editora/mascaraInput.js}"></script>
 
 </body>
 </html>

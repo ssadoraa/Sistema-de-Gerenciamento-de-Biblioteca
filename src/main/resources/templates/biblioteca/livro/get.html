@@ -5,7 +5,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <meta charset="UTF-8">
     <title>Visualizar Livro</title>
     
-    <link href="../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
     
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
@@ -14,7 +14,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 </head>
 <body>
     <div th:replace="~{ layout/navbar :: navbar}"></div>
-    <div class="container">
+    <div class="container mt-5">
         <h2>Visualizar Livro</h2>
         <p></p>
         <form class="container">
@@ -69,14 +69,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             </div>
         </form>
         <div class="mb-3 text-end">
-            <a type="submit" class="btn btn-dark">Editar</a>
-            <a class="voltar btn btn-light" href="#" title="Voltar a listagem de editais de bolsa">Voltar</a>
+            <a type="submit" class="btn btn-primary" title="Editar Livro"
+               href="edit.html" th:href="@{/livro/{id}/edit(id=${livro.id})}"
+            >Editar</a>
+            <a class="voltar btn btn-secondary" href="#" title="Voltar a listagem de livros" th:href="@{/livro}">Voltar</a>
         </div>
     </div>
 
-<script src="../../static/js/biblioteca/livroScripts.js" th:src="@{/js/biblioteca/livroScripts.js}"></script>
-<script src="../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
-<script src="../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+<script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+<script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+<script src="../../../static/js/biblioteca/livroScripts.js" th:src="@{/js/biblioteca/livroScripts.js}"></script>
 
 </body>
 </html>

@@ -1,0 +1,13 @@
+.select2-container--default .select2-selection--single {
+    background-color: #f7f7f9;
+    border: none;
+    border-radius: 0px;
+  }
+
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  color: #55595c;
+  line-height: 28px;
+  font-size: 15px;
+}

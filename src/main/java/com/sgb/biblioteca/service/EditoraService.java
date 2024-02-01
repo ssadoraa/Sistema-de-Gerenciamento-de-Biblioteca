@@ -1,6 +1,7 @@
 package com.sgb.biblioteca.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import lombok.val;
@@ -37,7 +38,11 @@ public class EditoraService {
     }
 
     public List<Editora> listagemEditoras(){
-        return editoraDAO.listagemEditora();
+        return editoraDAO.listagemEditora().stream().map(editora -> {
+                editora.setCnpj(editora.formataCNPJ());
+                editora.setTelefone(editora.formataTelefone());
+                return editora;
+            }).collect(Collectors.toList());
     }
 
 }
