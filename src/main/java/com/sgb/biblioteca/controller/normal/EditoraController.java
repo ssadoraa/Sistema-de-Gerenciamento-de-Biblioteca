@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sgb.biblioteca.model.Editora;
-import com.sgb.biblioteca.model.Livro;
 
 import org.springframework.web.bind.annotation.*;
 

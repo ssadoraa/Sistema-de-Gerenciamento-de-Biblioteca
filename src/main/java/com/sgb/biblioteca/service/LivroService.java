@@ -2,6 +2,7 @@ package com.sgb.biblioteca.service;
 
 import com.sgb.biblioteca.dao.LivroDAO;
 import com.sgb.biblioteca.model.Livro;
+import com.sgb.biblioteca.model.DTOs.LivroAutorDTO;
 import com.sgb.biblioteca.model.comDependencias.LivroComDependencia;
 import lombok.AllArgsConstructor;
 import java.util.Optional;
@@ -54,8 +55,8 @@ public class LivroService {
             });
     }
 
-    public List<Livro> listagemLivros(){
+    public List<LivroAutorDTO> listagemLivros(){
         return livroDAO.listagemLivros();
     }
-
+    
 }
