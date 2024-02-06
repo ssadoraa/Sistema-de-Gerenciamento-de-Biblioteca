@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizar Livro</title>
+    
+    <link href="../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    
+</head>
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <div class="container">
+        <h2>Listagem de Editoras</h2>
+        <p></p>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col">Nome</th>
+                        <th scope="col">CNPJ</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-light" th:each="editora : ${editoras}">
+                        <td><span th:text="${editora.nome}">Exemplo de nome</span></td>
+                        <td><span th:text="${editora.cnpj}">11.111.111/1111-11</span></td>
+                        <td><span th:text="${editora.telefone}">(11) 1111-1111</span></td>
+                        <td>
+                            <a class="btn btn-info btn-sm" title="Ver editora"
+                            href="get.html">
+                            Ver
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>     
+        </div>
+    </div>
+
+    <!-- <div th:replace="~{ layout/paginacao :: paginacao}"></div> -->
+
+<script src="../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+
+</body>
+</html>

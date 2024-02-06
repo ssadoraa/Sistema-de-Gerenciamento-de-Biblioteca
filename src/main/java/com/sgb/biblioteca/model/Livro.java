@@ -14,14 +14,17 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table(name = "livro")
 public class Livro {
     @Id
-    private long id;
+    private Long id;
     private String titulo;
-    private long editoraId;
-    private long generoId;
-    private long autorId;
-    private int ano;
+    private Long editoraId;
+    private Long generoId;
+    private Long autorId;
+    private Integer ano;
     private String edicao;
-    private int quantidade;
+    private Integer quantidade;
 
+    public static Livro empty() {
+        return new Livro(null, "", null, null, null, null, "", null);
+    }
 }
 
