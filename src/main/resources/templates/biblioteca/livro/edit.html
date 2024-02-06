@@ -29,12 +29,20 @@
                 <label class="fw-bold" for="autorId">Autor:</label>
                 <select id="autorId" name="autorId" class="form-control" required>
                     <option value="" disabled selected>Selecione um(a) autor(a)</option>
+                    <option th:value="${autor}"
+                            th:text="${autor.nome}"
+                            th:selected="${autor.id == livro.autorId}">
+                    </option>
                 </select>
             </div>
             <div class="form-group mt-2">
                 <label class="fw-bold" for="editoraId">Editora:</label>
                 <select id="editoraId" name="editoraId" class="form-control" required>
                     <option value="" disabled selected>Selecione uma editora</option>
+                    <option th:value="${editora}"
+                            th:text="${editora.nome}"
+                            th:selected="${editora.id == livro.editoraId}">
+                    </option>
                 </select>
             </div>
             <div class="form-group mt-2">

@@ -1,6 +1,8 @@
 package com.sgb.biblioteca.controller.normal;
 
 import com.sgb.biblioteca.model.Livro;
+import com.sgb.biblioteca.service.AutorService;
+import com.sgb.biblioteca.service.EditoraService;
 import com.sgb.biblioteca.service.GeneroService;
 import com.sgb.biblioteca.service.LivroService;
 
@@ -24,6 +26,10 @@ public class LivroController {
     private LivroService livroService;
     
     private GeneroService generoService;
+
+    private AutorService autorService;
+
+    private EditoraService editoraService;
     
     @GetMapping()
     public ModelAndView list(){
@@ -59,7 +65,9 @@ public class LivroController {
         
         return new ModelAndView("biblioteca/livro/edit")
             .addObject("livro", livro)
-            .addObject("generos", generos);
+            .addObject("generos", generos)
+            .addObject("autor", autorService.findById(livro.getAutorId()))
+            .addObject("editora", editoraService.findById(livro.getEditoraId()));
     }
 
 
