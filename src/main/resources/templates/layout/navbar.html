@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-light mb-3" data-bs-theme="light">
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="margin-left: 40px;">Biblioteca</a>
             <div class="collapse navbar-collapse" id="navbarColor03">
@@ -20,8 +20,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Livros</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Listar livros</a>
-                            <a class="dropdown-item" href="../livro/edit.html" th:href="@{new}">Cadastrar</a>
+                            <a class="dropdown-item" href="../biblioteca/livro/list.html" th:href="@{/livro}">Listar livros</a>
+                            <a class="dropdown-item" href="../biblioteca/livro/edit.html" th:href="@{/livro/new}">Cadastrar</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -34,8 +34,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Editoras</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Listar editoras</a>
-                            <a class="dropdown-item" href="#">Cadastrar</a>
+                            <a class="dropdown-item" href="../biblioteca/editora/list.html" th:href="@{/editora}">Listar editoras</a>
+                            <a class="dropdown-item" href="../biblioteca/editora/edit.html" th:href="@{/editora/new}">Cadastrar</a>
                         </div>
                     </li>
                 </ul>

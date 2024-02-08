@@ -2,6 +2,7 @@ package com.sgb.biblioteca.service;
 
 import com.sgb.biblioteca.dao.LivroDAO;
 import com.sgb.biblioteca.model.Livro;
+import com.sgb.biblioteca.model.DTOs.LivroAutorDTO;
 import com.sgb.biblioteca.model.comDependencias.LivroComDependencia;
 import lombok.AllArgsConstructor;
 import java.util.Optional;
@@ -41,7 +42,7 @@ public class LivroService {
                     return new LivroComDependencia(
                         livro.getId(),
                         livro.getTitulo(),
-                        editoraService.findById(livro.getEditoraId()),
+                        editoraService.findByIdCamposFormatados(livro.getEditoraId()),
                         generoService.findById(livro.getGeneroId()),
                         autorService.findById(livro.getAutorId()),
                         livro.getAno(),
@@ -54,8 +55,8 @@ public class LivroService {
             });
     }
 
-    public List<Livro> listagemLivros(){
+    public List<LivroAutorDTO> listagemLivros(){
         return livroDAO.listagemLivros();
     }
-
+    
 }
