@@ -57,5 +57,12 @@ public class Editora {
         }
     }
 
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 }
 

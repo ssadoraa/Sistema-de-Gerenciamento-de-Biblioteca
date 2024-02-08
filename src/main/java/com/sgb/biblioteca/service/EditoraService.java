@@ -21,10 +21,6 @@ public class EditoraService {
         editoraDAO.save(editora);
     }
 
-    public Editora findById(Long id) {
-        return editoraDAO.findById(id).orElse(null);
-    }
-
     public Editora findByIdFormatado(Long id){
         val editora = editoraDAO.findById(id).orElse(null);
         editora.setCnpj(editora.formataCNPJ());
