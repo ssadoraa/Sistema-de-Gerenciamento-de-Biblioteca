@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sgb.biblioteca.model.Funcionario;
 import com.sgb.biblioteca.model.select.Sexo;
 import com.sgb.biblioteca.service.FuncionarioService;
+
 
 @Controller
 @AllArgsConstructor
@@ -18,6 +20,14 @@ import com.sgb.biblioteca.service.FuncionarioService;
 public class FuncionarioController {
 
     private FuncionarioService funcionarioService;
+
+    @GetMapping("/{id}")
+    public ModelAndView get(@PathVariable Long id) {
+        val funcionario = funcionarioService.findByIdCamposFormatados(id);
+        return new ModelAndView("biblioteca/funcionario/get")
+            .addObject("funcionario", funcionario);
+    }
+    
     
     @GetMapping("/new")
     public ModelAndView novo(){
@@ -26,7 +36,7 @@ public class FuncionarioController {
     
     @GetMapping("/{id}/edit")
     public ModelAndView edit(@PathVariable Long id) {
-        val funcionario = funcionarioService.findFuncionarioById(id);
+        val funcionario = funcionarioService.findByIdCamposFormatados(id);
         return novoEdit(funcionario);
     }
 
@@ -37,10 +47,10 @@ public class FuncionarioController {
     }
 
     @PostMapping("/new")
-    public String post(Funcionario funcionario){
-        funcionarioService.save(funcionario);;
+    public String post(Funcionario funcionario, RedirectAttributes redirectAttributes){
+        funcionarioService.save(funcionario);
+        redirectAttributes.addAttribute("id", funcionario.getId());
         
-        return "livro/list";
+        return "redirect:/funcionario/{id}";
     }
-    
 }

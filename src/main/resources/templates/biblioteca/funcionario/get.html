@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizar Funcionário</title>
+
+    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+
+</head>
+
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <div class="container mt-5">
+        <h2>Visualizar Funcionário</h2>
+        <p></p>
+        <form class="container">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="nome">Nome:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="nome" name="nome" th:value="${funcionario.nome}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="dataNascimento">Data Nascimento:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext dataInverter" type="text" id="dataNascimento" name="dataNascimento" th:value="${funcionario.dataNascimento}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="sexo">Gênero:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="sexo" name="sexo" th:value="${funcionario.sexo.nome}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="cpf">CPF:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="cpf" name="cpf" th:value="${funcionario.cpf}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="endereco">Endereço:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="endereco" name="endereco" th:value="${funcionario.endereco}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="celular">Celular:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="celular" name="celular" th:value="${funcionario.celular}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="email">E-mail:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="email" name="email" th:value="${funcionario.email}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="dataAdmissao">Data Admissão:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext dataInverter" type="text" id="dataAdmissao" name="dataAdmissao" th:value="${funcionario.dataAdmissao}" readonly>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label fw-bold" for="cargo">Cargo:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="text" id="cargo" name="cargo" th:value="${funcionario.cargo}" readonly>
+                </div>
+            </div>
+        </form>
+        <div class="mb-3 text-end">
+            <a type="submit" class="btn btn-primary m-2" title="Editar funcionario" href="edit.html" th:href="@{/funcionario/{id}/edit(id=${funcionario.id})}">Editar</a>
+            <a class="voltar btn btn-secondary m-2" href="#" title="Voltar a listagem de funcionarios" th:href="@{/funcionario}">Voltar</a>
+        </div>
+    </div>
+
+    <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+    <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script src="../../../static/js/biblioteca/funcionario/get.js" th:src="@{/js/biblioteca/funcionario/get.js}"></script>
+
+</body>
+
+</html>
