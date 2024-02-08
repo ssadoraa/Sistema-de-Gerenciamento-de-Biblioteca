@@ -51,21 +51,20 @@ public class LivroController {
 
     @GetMapping("/new")
     public ModelAndView novo(){
-        return edit(Livro.empty());
+        return novoEdit(Livro.empty());
     }
     
     @GetMapping("/{id}/edit")
     public ModelAndView edit(@PathVariable Long id) {
         val livro = livroService.findLivroById(id);
-        return edit(livro);
+        return novoEdit(livro);
     }
     
-    private ModelAndView edit(Livro livro){
-        val generos = generoService.findAllGeneros();
+    private ModelAndView novoEdit(Livro livro){
         
         return new ModelAndView("biblioteca/livro/edit")
             .addObject("livro", livro)
-            .addObject("generos", generos)
+            .addObject("generos", generoService.findAllGeneros())
             .addObject("autor", autorService.findById(livro.getAutorId()))
             .addObject("editora", editoraService.findByIdCamposFormatados(livro.getEditoraId()));
     }
