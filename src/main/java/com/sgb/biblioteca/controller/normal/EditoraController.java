@@ -30,7 +30,7 @@ public class EditoraController {
     
     @GetMapping("{id}")
     public ModelAndView get(@PathVariable Long id) {
-        val editora = editoraService.findByIdFormatado(id);
+        val editora = editoraService.findByIdCamposFormatados(id);
 
         return new ModelAndView("biblioteca/editora/get")
             .addObject("editora", editora);
@@ -44,7 +44,7 @@ public class EditoraController {
     
     @GetMapping("/{id}/edit")    
     public ModelAndView edit(@PathVariable Long id){
-        val editora = editoraService.findById(id);
+        val editora = editoraService.findByIdCamposFormatados(id);
         return edit(editora);
     }
     

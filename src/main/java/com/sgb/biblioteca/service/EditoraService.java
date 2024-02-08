@@ -21,7 +21,7 @@ public class EditoraService {
         editoraDAO.save(editora);
     }
 
-    public Editora findByIdFormatado(Long id){
+    public Editora findByIdCamposFormatados(Long id){
         val editora = editoraDAO.findById(id).orElse(null);
         editora.setCnpj(editora.formataCNPJ());
         editora.setTelefone(editora.formataTelefone());

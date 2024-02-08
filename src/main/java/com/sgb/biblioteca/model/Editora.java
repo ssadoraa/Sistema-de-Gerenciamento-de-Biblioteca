@@ -24,8 +24,6 @@ public class Editora {
     public String formataCNPJ() {
         String numCNPJ = cnpj.replaceAll("[^0-9]", "");
 
-        //12.345.678/1234-56
-
         return String.format("%s.%s.%s/%s-%s",
                 numCNPJ.substring(0, 2),
                 numCNPJ.substring(2, 5),
@@ -55,14 +53,6 @@ public class Editora {
         if (telefone != null) {
             telefone = telefone.replaceAll("[^0-9]", "");
         }
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 }
 

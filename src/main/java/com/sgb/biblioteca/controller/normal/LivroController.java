@@ -67,7 +67,7 @@ public class LivroController {
             .addObject("livro", livro)
             .addObject("generos", generos)
             .addObject("autor", autorService.findById(livro.getAutorId()))
-            .addObject("editora", editoraService.findById(livro.getEditoraId()));
+            .addObject("editora", editoraService.findByIdCamposFormatados(livro.getEditoraId()));
     }
 
 

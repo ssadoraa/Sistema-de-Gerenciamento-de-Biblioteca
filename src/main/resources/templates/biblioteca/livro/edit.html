@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Livro</title>
@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 </head>
+
 <body>
     <div th:replace="~{ layout/navbar :: navbar}"></div>
     <div class="container mt-5">
@@ -29,9 +30,7 @@
                 <label class="fw-bold" for="autorId">Autor:</label>
                 <select id="autorId" name="autorId" class="form-control" required>
                     <option value="" disabled selected>Selecione um(a) autor(a)</option>
-                    <option th:value="${autor}"
-                            th:text="${autor.nome}"
-                            th:selected="${autor.id == livro.autorId}">
+                    <option th:value="${autor}" th:text="${autor.nome}" th:selected="${autor.id == livro.autorId}">
                     </option>
                 </select>
             </div>
@@ -39,9 +38,7 @@
                 <label class="fw-bold" for="editoraId">Editora:</label>
                 <select id="editoraId" name="editoraId" class="form-control" required>
                     <option value="" disabled selected>Selecione uma editora</option>
-                    <option th:value="${editora}"
-                            th:text="${editora.nome}"
-                            th:selected="${editora.id == livro.editoraId}">
+                    <option th:value="${editora}" th:text="${editora.nome}" th:selected="${editora.id == livro.editoraId}">
                     </option>
                 </select>
             </div>
@@ -49,10 +46,7 @@
                 <label class="fw-bold" for="generoId">Gênero:</label>
                 <select id="generoId" name="generoId" class="form-control">
                     <option value="" disabled selected>Selecione um gênero</option>
-                    <option th:each="genero : ${generos}"
-                            th:value="${genero.id}"
-                            th:text="${genero.nome}"
-                            th:selected="${genero.id == livro.generoId}">
+                    <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}" th:selected="${genero.id == livro.generoId}">
                     </option>
                 </select>
             </div>
@@ -70,16 +64,17 @@
             </div>
 
             <div class="form-group mt-3 d-flex justify-content-end ">
-                <input type="submit" value="Salvar" class="btn btn-primary mr-2">
-                <input type="reset" value="Limpar" class="btn btn-dark mr-2">
-                <a class="voltar btn btn-secondary" href="#" title="Cancelar cadastro" th:href="@{/livro}">Cancelar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary m-2">
+                <input type="reset" value="Limpar" class="btn btn-dark m-2">
+                <a class="voltar btn btn-secondary m-2" href="#" title="Cancelar cadastro" th:href="@{/livro}">Cancelar</a>
             </div>
         </form>
     </div>
 
-<script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
-<script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
-<script src="../../../static/js/biblioteca/livroScripts.js" th:src="@{/js/biblioteca/livroScripts.js}"></script>
+    <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+    <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script src="../../../static/js/biblioteca/livroScripts.js" th:src="@{/js/biblioteca/livroScripts.js}"></script>
 
 </body>
+
 </html>

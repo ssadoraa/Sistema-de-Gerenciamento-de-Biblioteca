@@ -42,7 +42,7 @@ public class LivroService {
                     return new LivroComDependencia(
                         livro.getId(),
                         livro.getTitulo(),
-                        editoraService.findById(livro.getEditoraId()),
+                        editoraService.findByIdCamposFormatados(livro.getEditoraId()),
                         generoService.findById(livro.getGeneroId()),
                         autorService.findById(livro.getAutorId()),
                         livro.getAno(),
