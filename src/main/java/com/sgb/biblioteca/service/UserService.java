@@ -3,10 +3,7 @@ package com.sgb.biblioteca.service;
 import com.sgb.biblioteca.dao.UserDAO;
 import com.sgb.biblioteca.model.UserModel;
 import com.sgb.biblioteca.model.UserRole;
-import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
