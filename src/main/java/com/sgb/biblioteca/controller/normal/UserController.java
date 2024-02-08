@@ -17,13 +17,13 @@ public class UserController {
 
     @GetMapping("/login")
     public String getLoginPage(){
-        return "login";
+        return "layout/login";
     }
 
     @GetMapping("/cadastro")
     public String getCadastroPage(Model model){
         model.addAttribute("user", new UserModel());
-        return "cadastro";
+        return "biblioteca/usuario/cadastro";
     }
 
     @PostMapping("/cadastro")
