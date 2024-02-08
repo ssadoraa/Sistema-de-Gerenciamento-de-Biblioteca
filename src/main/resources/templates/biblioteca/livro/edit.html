@@ -29,16 +29,14 @@
             <div class="form-group mt-2">
                 <label class="fw-bold" for="autorId">Autor:</label>
                 <select id="autorId" name="autorId" class="form-control" required>
-                    <option th:selected="${livro.autorId == null}" th:text="${livro.autorId == null ? 'Selecione um(a) autor(a)' : autor.nome}" th:value="${autor.id}">
+                    <option th:selected="${livro.autorId == null}" th:text="${livro.autorId == null ? 'Selecione um(a) autor(a)' : autor.nome}" th:value="${livro.autorId == null ? null : autor.id}">
                     </option>
                 </select>
             </div>
             <div class="form-group mt-2">
                 <label class="fw-bold" for="editoraId">Editora:</label>
                 <select id="editoraId" name="editoraId" class="form-control" required>
-                    <option th:selected="${livro.editoraId}" 
-                            th:text="${livro.editoraId == null ? 'Selecione uma editora' : editora.nome}" 
-                            th:value="${editora.id}">
+                    <option th:selected="${livro.editoraId}" th:text="${livro.editoraId == null ? 'Selecione uma editora' : editora.nome}" th:value="${livro.editoraId == null ? null : editora.id}">
                     </option>
                 </select>
             </div>
