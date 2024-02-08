@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 import lombok.val;
 import com.sgb.biblioteca.dao.FuncionarioDAO;
 import com.sgb.biblioteca.model.Funcionario;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -22,5 +25,12 @@ public class FuncionarioService {
         funcionario.setCpf(funcionario.formataCPF());
         funcionario.setCelular(funcionario.formataCelular());
         return funcionario;
+    }
+
+    public List<Funcionario> listagemFuncionarios(){
+        return funcionarioDAO.listagemFuncionario().stream().map(funcionario -> {
+            funcionario.setCelular(funcionario.formataCelular());
+            return funcionario;
+        }).collect(Collectors.toList());
     }
 }

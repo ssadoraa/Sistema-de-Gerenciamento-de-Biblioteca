@@ -53,4 +53,11 @@ public class FuncionarioController {
         
         return "redirect:/funcionario/{id}";
     }
+
+    @GetMapping("")
+    public ModelAndView list() {
+        val funcionarios = funcionarioService.listagemFuncionarios();
+        return new ModelAndView("biblioteca/funcionario/list")
+            .addObject("funcionarios", funcionarios);
+    }
 }
