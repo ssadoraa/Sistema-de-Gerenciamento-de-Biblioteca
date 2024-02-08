@@ -1,14 +1,14 @@
 package com.sgb.biblioteca.controller.normal;
 
+import com.sgb.biblioteca.model.Autor;
+import com.sgb.biblioteca.model.Editora;
 import com.sgb.biblioteca.model.Livro;
 import com.sgb.biblioteca.service.AutorService;
 import com.sgb.biblioteca.service.EditoraService;
 import com.sgb.biblioteca.service.GeneroService;
 import com.sgb.biblioteca.service.LivroService;
-
 import lombok.AllArgsConstructor;
 import lombok.val;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -61,12 +61,20 @@ public class LivroController {
     }
     
     private ModelAndView novoEdit(Livro livro){
+
+        Autor autor = null;
+        Editora editora = null;
+        
+        if (livro.getId() != null){
+            autor = autorService.findById(livro.getAutorId());
+            editora = editoraService.findByIdCamposFormatados(livro.getEditoraId());
+        }
         
         return new ModelAndView("biblioteca/livro/edit")
             .addObject("livro", livro)
             .addObject("generos", generoService.findAllGeneros())
-            .addObject("autor", autorService.findById(livro.getAutorId()))
-            .addObject("editora", editoraService.findByIdCamposFormatados(livro.getEditoraId()));
+            .addObject("autor", autor)
+            .addObject("editora", editora);
     }
 
 
