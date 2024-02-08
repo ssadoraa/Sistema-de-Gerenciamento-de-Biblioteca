@@ -1,6 +1,7 @@
 package com.sgb.biblioteca.dao;
 
 import com.sgb.biblioteca.model.Livro;
+import com.sgb.biblioteca.model.DTOs.LivroAutorDTO;
 
 import java.util.List;
 
@@ -9,9 +10,9 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface LivroDAO extends CrudRepository<Livro, Long> {
-    
-    @Query("SELECT * FROM biblioteca.livro l "
-           + "ORDER BY l.titulo;")
-    List<Livro> listagemLivros();
+
+    @Query("SELECT l.id, l.titulo, a.nome, l.quantidade FROM biblioteca.livro l " +
+           " JOIN biblioteca.autor a WHERE l.autor_id = a.id")
+    List<LivroAutorDTO> listagemLivros();
 }
 

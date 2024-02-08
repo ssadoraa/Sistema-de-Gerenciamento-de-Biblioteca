@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Editora</title>
+    
+    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    
+</head>
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+
+    <div class="container mt-5">
+        <h2 th:text="${(editora.id == null) ? 'Cadastrar Editora' : 'Editar Editora'}" class="mb-4">Cadastro de Editora</h2>
+
+        <form method="post" th:action="@{/editora/new}">
+
+            <input type="hidden" name="id" th:value="${editora.id}">
+
+            <div class="form-group">
+                <label class="fw-bold" for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" th:value="${editora.nome}" class="form-control" placeholder="Editora..." required>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" th:value="${editora.endereco}" class="form-control" placeholder="Endereço..." required>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="cnpj">CNPJ:</label>
+                <input type="text" id="cnpj" name="cnpj" placeholder="99.999.999/9999-99" maxlength="18" th:value="${editora.cnpj}" class="form-control" required>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" placeholder="(99) 9999-9999" maxlength="15" th:value="${editora.telefone}" class="form-control" required>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" rows="4" th:text="${editora.descricao}" class="form-control" placeholder="Digite uma descrição da editora..." required></textarea>
+            </div>
+            
+            <div class="form-group mt-3 d-flex justify-content-end ">
+                <input type="submit" value="Salvar" class="btn btn-primary m-2">
+                <input type="reset" value="Limpar" class="btn btn-dark m-2">
+                <a class="voltar btn btn-secondary m-2" href="#" title="Cancelar cadastro" th:href="@{/editora}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+<script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+<script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+<script src="../../../static/js/editora/mascaraInput.js" th:src="@{/js/editora/mascaraInput.js}"></script>
+
+</body>
+</html>

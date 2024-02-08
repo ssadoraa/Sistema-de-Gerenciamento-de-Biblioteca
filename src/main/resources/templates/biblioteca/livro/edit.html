@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Livro</title>
+
+    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <link rel="stylesheet" href="../../../static/css/geral/select2.css" th:href="@{/css/geral/select2.css}">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+</head>
+
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <div class="container mt-5">
+        <h2 th:text="${(livro.id == null) ? 'Cadastrar Livro' : 'Editar Livro'}" class="mb-4">Cadastro de Livro</h2>
+
+        <form method="post" th:action="@{/livro/new}">
+            <input type="hidden" name="id" th:value="${livro.id}">
+
+            <div class="form-group">
+                <label class="fw-bold" for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" th:value="${livro.titulo}" class="form-control" placeholder="Título..." required>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="autorId">Autor:</label>
+                <select id="autorId" name="autorId" class="form-control" required>
+                    <option value="" disabled selected>Selecione um(a) autor(a)</option>
+                    <option th:value="${autor}" th:text="${autor.nome}" th:selected="${autor.id == livro.autorId}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="editoraId">Editora:</label>
+                <select id="editoraId" name="editoraId" class="form-control" required>
+                    <option value="" disabled selected>Selecione uma editora</option>
+                    <option th:value="${editora}" th:text="${editora.nome}" th:selected="${editora.id == livro.editoraId}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="generoId">Gênero:</label>
+                <select id="generoId" name="generoId" class="form-control">
+                    <option value="" disabled selected>Selecione um gênero</option>
+                    <option th:each="genero : ${generos}" th:value="${genero.id}" th:text="${genero.nome}" th:selected="${genero.id == livro.generoId}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="ano">Ano:</label>
+                <input type="number" id="ano" name="ano" th:value="${livro.ano}" class="form-control" placeholder="2023..." required>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="edicao">Edição:</label>
+                <input type="text" id="edicao" name="edicao" th:value="${livro.edicao}" class="form-control" placeholder="Edição...">
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" th:value="${livro.quantidade}" class="form-control" placeholder="2..." required>
+            </div>
+
+            <div class="form-group mt-3 d-flex justify-content-end ">
+                <input type="submit" value="Salvar" class="btn btn-primary m-2">
+                <input type="reset" value="Limpar" class="btn btn-dark m-2">
+                <a class="voltar btn btn-secondary m-2" href="#" title="Cancelar cadastro" th:href="@{/livro}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+    <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script src="../../../static/js/biblioteca/livroScripts.js" th:src="@{/js/biblioteca/livroScripts.js}"></script>
+
+</body>
+
+</html>

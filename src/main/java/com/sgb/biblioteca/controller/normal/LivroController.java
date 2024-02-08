@@ -1,6 +1,8 @@
 package com.sgb.biblioteca.controller.normal;
 
 import com.sgb.biblioteca.model.Livro;
+import com.sgb.biblioteca.service.AutorService;
+import com.sgb.biblioteca.service.EditoraService;
 import com.sgb.biblioteca.service.GeneroService;
 import com.sgb.biblioteca.service.LivroService;
 
@@ -13,63 +15,68 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller 
 @AllArgsConstructor
 @RequestMapping("/livro")
 public class LivroController {
-
+    
     private LivroService livroService;
-
+    
     private GeneroService generoService;
 
+    private AutorService autorService;
+
+    private EditoraService editoraService;
+    
+    @GetMapping()
+    public ModelAndView list(){
+        val livros = livroService.listagemLivros();
+    
+        return new ModelAndView("biblioteca/livro/list")
+            .addObject("livros", livros);
+    }
+    
+    
     @GetMapping("/{id}")
     public ModelAndView get(@PathVariable Long id){
         val livro = livroService.findLivroComDependenciaById(id);
 
-        return new ModelAndView("livro/get")
+        return new ModelAndView("biblioteca/livro/get")
             .addObject("livro", livro);
     }
 
+
     @GetMapping("/new")
     public ModelAndView novo(){
-        return edit(Livro.empty());
+        return novoEdit(Livro.empty());
     }
     
     @GetMapping("/{id}/edit")
     public ModelAndView edit(@PathVariable Long id) {
         val livro = livroService.findLivroById(id);
-        return edit(livro);
+        return novoEdit(livro);
+    }
+    
+    private ModelAndView novoEdit(Livro livro){
+        
+        return new ModelAndView("biblioteca/livro/edit")
+            .addObject("livro", livro)
+            .addObject("generos", generoService.findAllGeneros())
+            .addObject("autor", autorService.findById(livro.getAutorId()))
+            .addObject("editora", editoraService.findByIdCamposFormatados(livro.getEditoraId()));
     }
 
-    public ModelAndView edit(){
-        val generos = generoService.findAllGeneros();
-
-        return new ModelAndView("livro/edit")
-            .addObject("generos", generos);
-    }
 
     @PostMapping("/new")
-    public String post(Livro livro){
+    public String post(Livro livro, RedirectAttributes redirectAttributes){
         livroService.save(livro);
         
-        return "livro/edit";
+        redirectAttributes.addAttribute("id", livro.getId());
+        
+        return "redirect:/livro/{id}";
     }
 
-    private ModelAndView edit(Livro livro){
-        val generos = generoService.findAllGeneros();
-
-        return new ModelAndView("livro/edit")
-            .addObject("livro", livro)
-            .addObject("generos", generos);
-    }
-
-    @GetMapping()
-    public ModelAndView list(){
-        val livros = livroService.listagemLivros();
-
-        return new ModelAndView("livro/list")
-            .addObject("livros", livros);
-    }
 }
