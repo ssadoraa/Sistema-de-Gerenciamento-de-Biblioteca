@@ -28,10 +28,10 @@ public class Funcionario {
     private String celular;
     private String email;
     private LocalDate dataAdmissao;
-    private String cargo;
+    private UserRole cargo;
 
     public static Funcionario empty() {
-        return new Funcionario(null, "", null, null, "", "", "", "", null, "");
+        return new Funcionario(null, "", null, null, "", "", "", "", null, UserRole.ATENDENTE);
     }
 
     public String formataCPF() {

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import lombok.val;
 import com.sgb.biblioteca.dao.FuncionarioDAO;
 import com.sgb.biblioteca.model.Funcionario;
+import com.sgb.biblioteca.model.UserRole;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +19,7 @@ public class FuncionarioService {
 
     public void save(Funcionario funcionario){
         funcionario.limpaFormatacao();
+        funcionario.setCargo(UserRole.ATENDENTE);
         funcionarioDAO.save(funcionario);
     }
 
