@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link href="../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../static/css/biblioteca/home/style.css" th:href="@{/css/biblioteca/home/style.css}" rel="stylesheet" media="screen" />
+    <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
+
+</head>
+
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <div class="background text-center" th:style="'background-image: url(' + @{/images/geral/estante.jpg} + ');'">
+        <div class="sobreposicao"></div>
+        <div class="background-content">
+            <h1>Bem-vindo à Biblioteca</h1>
+            <p>Uma fonte de conhecimento e entretenimento para todos.</p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <p class="lead text-center mb-4">Explore um universo de conhecimento e aventuras através da leitura. Aqui estão algumas curiosidades fascinantes sobre livros:</p>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card border-info text-center mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Mais de 2,2 milhões de novos títulos por ano</h5>
+                        <p class="card-text">No mundo, mais de 2,2 milhões de novos títulos são publicados a cada ano.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card border-info text-center mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">O livro mais antigo</h5>
+                        <p class="card-text">O livro mais antigo do mundo conhecido é o "Epic of Gilgamesh", que data de cerca de 2000 a.C.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card border-info text-center mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Biblioteca Nacional do Brasil</h5>
+                        <p class="card-text">A Biblioteca Nacional do Brasil, localizada no Rio de Janeiro, é a maior biblioteca da América Latina, com mais de 9 milhões de itens em seu acervo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card border-info text-center mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Língua mais utilizada em publicações</h5>
+                        <p class="card-text">A língua mais utilizada em publicações de livros é o inglês, seguida pelo chinês e pelo espanhol.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card border-info text-center mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Livro mais vendido</h5>
+                        <p class="card-text">O livro mais vendido de todos os tempos é a Bíblia, com mais de 5 bilhões de cópias impressas e distribuídas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card border-info text-center mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Maior livro já publicado</h5>
+                        <p class="card-text">O maior livro já publicado tem 1,52 metros de altura, 2,26 metros de largura e pesa 60 quilos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="lead text-center mt-4">Essas são apenas algumas curiosidades que demonstram a importância e a diversidade do mundo dos livros. Continue explorando e descobrindo novas histórias!</p>
+    </div>
+
+    <div th:replace="~{ layout/footer :: footer}"></div>
+
+    <script src="../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+    <script src="../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+</body>
+
+</html>
