@@ -1,4 +1,4 @@
-package com.sgb.biblioteca.controller.normal.util;
+package com.sgb.biblioteca.controller.normal;
 
 import org.springframework.stereotype.Controller;
 
