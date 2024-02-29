@@ -19,7 +19,7 @@ import lombok.Setter;
 public class Emprestimo {
     @Id Long id;
     @NotNull Long livroId;
-    @NotNull Long clienteId;
+    @NotNull Long userId;
     @NotNull Long funcionarioId;
     LocalDate dataEmprestimo;
     LocalDate dataDevolucao;
