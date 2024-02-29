@@ -10,11 +10,11 @@ import org.springframework.data.repository.CrudRepository;
 public interface LivroDAO extends CrudRepository<Livro, Long> {
 
     @Query("SELECT l.id, l.titulo, a.nome, l.quantidade FROM biblioteca.livro l " +
-           " JOIN biblioteca.autor a WHERE l.autor_id = a.id")
+           " JOIN biblioteca.autor a ON l.autor_id = a.id")
     List<LivroAutorDTO> listagemLivros();
 
     @Query("SELECT l.id, l.titulo FROM biblioteca.livro l " +
            "WHERE l.titulo LIKE CONCAT('%', :titulo, '%')")
-    List<Livro> autorQuery(String titulo);
+    List<Livro> livroQuery(String titulo);
 }
 

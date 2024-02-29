@@ -1,8 +1,8 @@
 package com.sgb.biblioteca.controller.rest;
 
 import org.springframework.web.bind.annotation.RestController;
-import com.sgb.biblioteca.model.Livro;
-import com.sgb.biblioteca.service.LivroService;
+import com.sgb.biblioteca.model.DTOs.LivroAutorDTO;
+import com.sgb.biblioteca.service.LivroAutorDTOService;
 import lombok.AllArgsConstructor;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/api/livros")
 public class LivroRestController {
 
-    private final LivroService livroService;
+    private final LivroAutorDTOService livroAutorDTOService;
     
     @GetMapping
     @ResponseBody
-    public List<Livro> findByQuery(@RequestParam String busca){
-        return livroService.findLivroByQuery(busca);
+    public List<LivroAutorDTO> findByQuery(@RequestParam String busca){
+        return livroAutorDTOService.findLivroByQuery(busca);
     }
 
 }

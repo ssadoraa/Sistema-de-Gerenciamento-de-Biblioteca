@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import com.sgb.biblioteca.model.Emprestimo;
 import com.sgb.biblioteca.model.Funcionario;
-import com.sgb.biblioteca.model.Livro;
 import com.sgb.biblioteca.model.UserModel;
+import com.sgb.biblioteca.model.DTOs.LivroAutorDTO;
 import com.sgb.biblioteca.service.EmprestimoService;
 import com.sgb.biblioteca.service.FuncionarioService;
-import com.sgb.biblioteca.service.LivroService;
+import com.sgb.biblioteca.service.LivroAutorDTOService;
 import com.sgb.biblioteca.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -25,7 +25,7 @@ public class EmprestimoController {
 
     private EmprestimoService emprestimoService;
 
-    private LivroService livroService;
+    private LivroAutorDTOService livroAutorDTOService;
 
     private UserService userService;
 
@@ -43,12 +43,12 @@ public class EmprestimoController {
     }
 
     private ModelAndView novoEdit(Emprestimo emprestimo){
-        Livro livro = null;
+        LivroAutorDTO livro = null;
         UserModel user = null;
         Funcionario funcionario = null;
 
         if (emprestimo.getId() != null){
-            livro = livroService.findLivroById(emprestimo.getLivroId());
+            livro = livroAutorDTOService.findLivroAutorDTOById(emprestimo.getLivroId());
             user = userService.findUserById(emprestimo.getUserId());
             funcionario = funcionarioService.findFuncionarioById(emprestimo.getFuncionarioId());
         }

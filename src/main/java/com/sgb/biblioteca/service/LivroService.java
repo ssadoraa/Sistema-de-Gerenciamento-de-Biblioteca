@@ -30,8 +30,8 @@ public class LivroService {
     }
 
     public List<Livro> findLivroByQuery(String titulo){
-        List<Livro> autores = livroDAO.autorQuery(titulo);
-        return autores;
+        List<Livro> livros = livroDAO.livroQuery(titulo);
+        return livros;
     }
 
     // Métodos para a classe LivroComDependencias

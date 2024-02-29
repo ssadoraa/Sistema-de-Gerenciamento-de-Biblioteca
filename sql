@@ -41,11 +41,24 @@ create table user (
     password VARCHAR(1000) NOT NULL,
     role VARCHAR(100) NOT NULL,
     cpf VARCHAR(20) NOT NULL,
-    data_nascimento date NOT NULL,
+    data_nascimento DATE NOT NULL,
     sexo VARCHAR(20) NOT NULL,
     endereco VARCHAR(1000) NOT NULL,
     telefone VARCHAR(100) NOT NULL,
     email VARCHAR(200) NOT NULL,
+);
+
+CREATE TABLE emprestimo (
+    id BIGINT(20) NOT NULL AUTO_INCREMENT,
+    livro_id BIGINT(20) NOT NULL,
+    user_id BIGINT(20) NOT NULL,
+    funcionario_id BIGINT(20) NOT NULL,
+    data_emprestimo DATE NOT NULL,
+    data_devolucao DATE NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT emprestimo_cliente_FK FOREIGN KEY (user_id) REFERENCES user (id),
+    CONSTRAINT emprestimo_funcionario_FK FOREIGN KEY (funcionario_id) REFERENCES funcionario (id),
+    CONSTRAINT emprestimo_livro_FK FOREIGN KEY (livro_id) REFERENCES livro (id)
 );
 
 insert into genero (id, nome)

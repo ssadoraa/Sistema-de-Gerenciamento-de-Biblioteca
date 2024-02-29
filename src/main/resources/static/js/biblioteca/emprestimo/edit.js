@@ -13,7 +13,7 @@ $(document).ready(function () {
           results: data.map(function (item) {
             return {
               id: item.id,
-              text: item.titulo,
+              text: item.titulo + ' - ' + item.nome,
             };
           }),
         };
