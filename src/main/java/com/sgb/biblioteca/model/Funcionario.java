@@ -31,6 +31,6 @@ public class Funcionario {
     private String cargo;
 
     public static Funcionario empty() {
-        return new Funcionario(null, "", null, null, "", "", "", "", null, "");
+        return new Funcionario(null, "", null, null, "", "", "", "", LocalDate.now(), "");
     }
 }
