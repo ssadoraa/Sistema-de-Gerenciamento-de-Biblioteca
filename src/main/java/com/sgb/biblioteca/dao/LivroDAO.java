@@ -13,8 +13,8 @@ public interface LivroDAO extends CrudRepository<Livro, Long> {
            " JOIN biblioteca.autor a WHERE l.autor_id = a.id")
     List<LivroAutorDTO> listagemLivros();
 
-    @Query("SELECT * FROM biblioteca.livro l "
-           + " WHERE l.titulo LIKE :titulo")
+    @Query("SELECT l.id, l.titulo FROM biblioteca.livro l " +
+           "WHERE l.titulo LIKE CONCAT('%', :titulo, '%')")
     List<Livro> autorQuery(String titulo);
 }
 

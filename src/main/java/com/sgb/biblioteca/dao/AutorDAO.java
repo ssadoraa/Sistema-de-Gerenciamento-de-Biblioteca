@@ -9,7 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AutorDAO extends CrudRepository<Autor, Long> {
    
-    @Query("SELECT * FROM biblioteca.autor a "
-           + " WHERE a.nome LIKE :nome")
+    @Query("SELECT a.id, a.nome FROM biblioteca.autor a "
+           + " WHERE a.nome LIKE CONCAT('%', :nome, '%')")
     List<Autor> autorQuery(String nome);
 }

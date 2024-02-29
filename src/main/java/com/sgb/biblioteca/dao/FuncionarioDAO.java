@@ -7,7 +7,7 @@ import com.sgb.biblioteca.model.Funcionario;
 
 public interface FuncionarioDAO extends CrudRepository<Funcionario, Long>{
 
-    @Query("SELECT * FROM biblioteca.funcionario f "
-           + " WHERE f.nome LIKE :nome")
+    @Query("SELECT f.id, f.nome FROM biblioteca.funcionario f "
+           + " WHERE f.nome LIKE CONCAT('%', :nome, '%')")
     List<Funcionario> funcionarioQuery(String nome);
 }
