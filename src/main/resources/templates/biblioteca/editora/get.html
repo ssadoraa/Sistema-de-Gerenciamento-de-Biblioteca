@@ -6,7 +6,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <title>Visualizar Editora</title>
     
     <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />   
-    
+    <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
+
 </head>
 <body>
     <div th:replace="~{ layout/navbar :: navbar}"></div>
@@ -52,6 +53,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             <a class="voltar btn btn-secondary m-2" href="#" title="Voltar a listagem de editoras" th:href="@{/editora}">Voltar</a>
         </div>
     </div>
+
+    <div th:replace="~{ layout/footer :: footer}"></div>
 
 <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
 <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>

@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.sgb.biblioteca.model.Funcionario;
-import com.sgb.biblioteca.model.select.Sexo;
+import com.sgb.biblioteca.model.UserModel;
 import com.sgb.biblioteca.service.FuncionarioService;
 
 
@@ -31,7 +29,7 @@ public class FuncionarioController {
     
     @GetMapping("/new")
     public ModelAndView novo(){
-        return novoEdit(Funcionario.empty());
+        return novoEdit(UserModel.empty());
     }
     
     @GetMapping("/{id}/edit")
@@ -40,17 +38,14 @@ public class FuncionarioController {
         return novoEdit(funcionario);
     }
 
-    private ModelAndView novoEdit(Funcionario funcionario){
+    private ModelAndView novoEdit(UserModel funcionario){
         return new ModelAndView("biblioteca/funcionario/edit")
-            .addObject("funcionario", funcionario)
-            .addObject("sexos", Sexo.values());
+            .addObject("funcionario", funcionario);
     }
 
     @PostMapping("/new")
-    public String post(Funcionario funcionario, RedirectAttributes redirectAttributes){
-        funcionarioService.save(funcionario);
-        redirectAttributes.addAttribute("id", funcionario.getId());
-        
+    public String post(UserModel funcionario){
+        funcionarioService.save(funcionario);;
         return "redirect:/funcionario/{id}";
     }
 

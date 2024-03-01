@@ -36,17 +36,20 @@ create table livro (
 );
 
 create table user (
-	id BIGINT(20) NOT NULL,
-    username VARCHAR(100) NOT NULL,
-    password VARCHAR(1000) NOT NULL,
-    role VARCHAR(100) NOT NULL,
-    cpf VARCHAR(20) NOT NULL,
+    id BIGINT(20) NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
     data_nascimento date NOT NULL,
     sexo VARCHAR(20) NOT NULL,
+    cpf VARCHAR(20) NOT NULL,
     endereco VARCHAR(1000) NOT NULL,
     telefone VARCHAR(100) NOT NULL,
     email VARCHAR(200) NOT NULL,
-);
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(1000) NOT NULL,
+    role VARCHAR(100) NOT NULL,
+    data_cadastro timestamp NULL DEFAULT NULL,
+    PRIMARY KEY (id)
+) 
 
 
 CREATE TABLE funcionario (

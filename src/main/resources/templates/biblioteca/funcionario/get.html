@@ -17,25 +17,23 @@
         <form class="container">
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label fw-bold" for="nome">Nome:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                     <input class="form-control-plaintext" type="text" id="nome" name="nome" th:value="${funcionario.nome}" readonly>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label fw-bold" for="dataNascimento">Data Nascimento:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                     <input class="form-control-plaintext dataInverter" type="text" id="dataNascimento" name="dataNascimento" th:value="${funcionario.dataNascimento}" readonly>
                 </div>
-            </div>
-            <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label fw-bold" for="sexo">Gênero:</label>
-                <div class="col-sm-10">
-                    <input class="form-control-plaintext" type="text" id="sexo" name="sexo" th:value="${funcionario.sexo.nome}" readonly>
+                <div class="col-sm-4">
+                    <input class="form-control-plaintext" type="text" id="sexo" name="sexo" th:value="${funcionario.sexo}" readonly>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label fw-bold" for="cpf">CPF:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                     <input class="form-control-plaintext" type="text" id="cpf" name="cpf" th:value="${funcionario.cpf}" readonly>
                 </div>
             </div>
@@ -46,27 +44,32 @@
                 </div>
             </div>
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label fw-bold" for="celular">Celular:</label>
-                <div class="col-sm-10">
-                    <input class="form-control-plaintext" type="text" id="celular" name="celular" th:value="${funcionario.celular}" readonly>
+                <label class="col-sm-2 col-form-label fw-bold" for="telefone">Telefone:</label>
+                <div class="col-sm-4">
+                    <input class="form-control-plaintext" type="text" id="telefone" name="telefone" th:value="${funcionario.telefone}" readonly>
                 </div>
-            </div>
-            <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label fw-bold" for="email">E-mail:</label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                     <input class="form-control-plaintext" type="text" id="email" name="email" th:value="${funcionario.email}" readonly>
                 </div>
             </div>
+
+            <hr class="mt-4">
+
             <div class="mb-3 row">
-                <label class="col-sm-2 col-form-label fw-bold" for="dataAdmissao">Data Admissão:</label>
-                <div class="col-sm-10">
-                    <input class="form-control-plaintext dataInverter" type="text" id="dataAdmissao" name="dataAdmissao" th:value="${funcionario.dataAdmissao}" readonly>
+                <label class="col-sm-2 col-form-label fw-bold" for="username">Username:</label>
+                <div class="col-sm-4">
+                    <input class="form-control-plaintext" type="text" id="username" name="username" th:value="${funcionario.username}" readonly>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label fw-bold" for="cargo">Cargo:</label>
-                <div class="col-sm-10">
-                    <input class="form-control-plaintext" type="text" id="cargo" name="cargo" th:value="${funcionario.cargo}" readonly>
+                <div class="col-sm-4">
+                    <input class="form-control-plaintext" type="text" id="cargo" name="cargo" th:value="${funcionario.role}" readonly>
+                </div>
+                <label class="col-sm-2 col-form-label fw-bold" for="dataCadastro">Data Admissão:</label>
+                <div class="col-sm-4">
+                    <input class="form-control-plaintext dataInverter" type="text" id="dataCadastro" name="dataCadastro" th:value="${funcionario.dataCadastro}" readonly>
                 </div>
             </div>
         </form>

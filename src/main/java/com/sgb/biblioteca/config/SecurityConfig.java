@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .permitAll()
                 .anyRequest()
                 .authenticated())
-                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/livro/new", true).permitAll())
+                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/", true).permitAll())
                 .logout(LogoutConfigurer::permitAll);
         return http.build();
     }
