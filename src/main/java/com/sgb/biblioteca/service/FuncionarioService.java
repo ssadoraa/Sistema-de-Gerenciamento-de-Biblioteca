@@ -1,23 +1,28 @@
 package com.sgb.biblioteca.service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.sgb.biblioteca.dao.FuncionarioDAO;
-import com.sgb.biblioteca.model.Funcionario;
-
+import com.sgb.biblioteca.dao.UserDAO;
+import com.sgb.biblioteca.model.UserModel;
+import com.sgb.biblioteca.model.UserRole;
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
 public class FuncionarioService {
 
-    private FuncionarioDAO funcionarioDAO;
+    private UserDAO userDAO;
 
-    public void save(Funcionario funcionario){
-        funcionarioDAO.save(funcionario);
+    private PasswordEncoder passwordEncoder;
+
+    public void save(UserModel funcionario){
+        funcionario.setRole(UserRole.ATENDENTE);
+        funcionario.setPassword(passwordEncoder.encode(funcionario.getPassword()));
+        funcionario.limpaFormatacao();
+        userDAO.save(funcionario);
     }
 
-    public Funcionario findFuncionarioById(Long id){
-        return funcionarioDAO.findById(id).orElse(null);
+    public UserModel findFuncionarioById(Long id){
+        return userDAO.findById(id).orElse(null);
     }
 }
