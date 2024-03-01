@@ -38,4 +38,23 @@ public class UserModel {
             telefone = telefone.replaceAll("[^0-9]", "");
         }
     }
+
+    public String formataCPF() {
+        String numCPF = cpf.replaceAll("[^0-9]", "");
+
+        return String.format("%s.%s.%s-%s",
+                numCPF.substring(0, 3),
+                numCPF.substring(3, 6),
+                numCPF.substring(6, 9),
+                numCPF.substring(9));
+    }
+    
+    public String formataTelefone() {
+        String numTelefone = telefone.replaceAll("[^0-9]", "");
+
+        return String.format("(%s) %s-%s",
+                numTelefone.substring(0, 2),
+                numTelefone.substring(2, 7),
+                numTelefone.substring(7));
+    }
 }

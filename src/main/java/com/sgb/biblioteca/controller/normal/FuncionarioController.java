@@ -11,12 +11,21 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sgb.biblioteca.model.UserModel;
 import com.sgb.biblioteca.service.FuncionarioService;
 
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/funcionario")
 public class FuncionarioController {
 
     private FuncionarioService funcionarioService;
+
+    @GetMapping("/{id}")
+    public ModelAndView get(@PathVariable Long id) {
+        val funcionario = funcionarioService.findByIdCamposFormatados(id);
+        return new ModelAndView("biblioteca/funcionario/get")
+            .addObject("funcionario", funcionario);
+    }
+    
     
     @GetMapping("/new")
     public ModelAndView novo(){
@@ -25,7 +34,7 @@ public class FuncionarioController {
     
     @GetMapping("/{id}/edit")
     public ModelAndView edit(@PathVariable Long id) {
-        val funcionario = funcionarioService.findFuncionarioById(id);
+        val funcionario = funcionarioService.findByIdCamposFormatados(id);
         return novoEdit(funcionario);
     }
 
@@ -37,8 +46,13 @@ public class FuncionarioController {
     @PostMapping("/new")
     public String post(UserModel funcionario){
         funcionarioService.save(funcionario);;
-        
-        return "livro/list";
+        return "redirect:/funcionario/{id}";
     }
-    
+
+    @GetMapping("")
+    public ModelAndView list() {
+        val funcionarios = funcionarioService.listagemFuncionarios();
+        return new ModelAndView("biblioteca/funcionario/list")
+            .addObject("funcionarios", funcionarios);
+    }
 }

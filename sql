@@ -51,6 +51,21 @@ create table user (
     PRIMARY KEY (id)
 ) 
 
+
+CREATE TABLE funcionario (
+    id bigint NOT NULL AUTO_INCREMENT,
+    nome varchar(100) NOT NULL,
+    data_nascimento date NOT NULL,
+    sexo varchar(15) NOT NULL,
+    cpf varchar(15) NOT NULL,
+    endereco varchar(255) NOT NULL,
+    celular varchar(15) NOT NULL,
+    email varchar(100) NOT NULL,
+    data_admissao timestamp DEFAULT CURRENT_TIMESTAMP,
+    cargo varchar(50) DEFAULT 'atendente',
+    PRIMARY KEY (id)
+)
+
 insert into genero (id, nome)
 values
 (1, "Aventura"),
