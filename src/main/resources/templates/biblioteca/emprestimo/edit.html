@@ -36,7 +36,7 @@
             <div class="form-group mt-2">
                 <label class="fw-bold" for="userId">Cliente:</label>
                 <select id="userId" name="userId" class="form-control" required>
-                    <option th:selected="${emprestimo.userId == null}" th:text="${emprestimo.userId == null ? 'Selecione um cliente' : user.text}" th:value="${emprestimo.userId == null ? null : user.id}">
+                    <option th:selected="${emprestimo.userId == null}" th:text="${emprestimo.userId == null ? 'Selecione um cliente (pelo username)' : user.text}" th:value="${emprestimo.userId == null ? null : user.id}">
                     </option>
                 </select>
             </div>

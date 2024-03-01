@@ -35,7 +35,7 @@ $(document).ready(function () {
           results: data.map(function (item) {
             return {
               id: item.id,
-              text: item.username,
+              text: item.username + ' - ' + item.cpf,
             };
           }),
         };

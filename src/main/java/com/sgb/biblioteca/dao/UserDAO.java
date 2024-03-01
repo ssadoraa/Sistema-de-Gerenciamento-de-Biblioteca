@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserDAO extends CrudRepository<UserModel, Long> {
     UserModel findByUsername(String username);
 
-    @Query("SELECT u.id, u.username FROM biblioteca.user u "
+    @Query("SELECT u.id, u.username, u.cpf FROM biblioteca.user u "
            + " WHERE u.username LIKE CONCAT('%', :username, '%')")
     List<UserModel> userQuery(String username);
 }
