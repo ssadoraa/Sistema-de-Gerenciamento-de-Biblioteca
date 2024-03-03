@@ -37,16 +37,35 @@ create table livro (
 
 create table user (
 	id BIGINT(20) NOT NULL,
-    username VARCHAR(100) NOT NULL,
-    password VARCHAR(1000) NOT NULL,
-    role VARCHAR(100) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     cpf VARCHAR(20) NOT NULL,
     data_nascimento DATE NOT NULL,
     sexo VARCHAR(20) NOT NULL,
+    cpf VARCHAR(20) NOT NULL,
     endereco VARCHAR(1000) NOT NULL,
     telefone VARCHAR(100) NOT NULL,
     email VARCHAR(200) NOT NULL,
-);
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(1000) NOT NULL,
+    role VARCHAR(100) NOT NULL,
+    data_cadastro timestamp NULL DEFAULT NULL,
+    PRIMARY KEY (id)
+) 
+
+
+CREATE TABLE funcionario (
+    id bigint NOT NULL AUTO_INCREMENT,
+    nome varchar(100) NOT NULL,
+    data_nascimento date NOT NULL,
+    sexo varchar(15) NOT NULL,
+    cpf varchar(15) NOT NULL,
+    endereco varchar(255) NOT NULL,
+    celular varchar(15) NOT NULL,
+    email varchar(100) NOT NULL,
+    data_admissao timestamp DEFAULT CURRENT_TIMESTAMP,
+    cargo varchar(50) DEFAULT 'atendente',
+    PRIMARY KEY (id)
+)
 
 CREATE TABLE emprestimo (
     id BIGINT(20) NOT NULL AUTO_INCREMENT,

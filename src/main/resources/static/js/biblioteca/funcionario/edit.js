@@ -12,11 +12,11 @@ function formatarCPF(cpf) {
     return cpf;
 }
 
-function formatarCelular(celular) {
-    celular = celular.replace(/\D/g, ""); // Remove tudo o que não é dígito
-    celular = celular.replace(/^(\d{2})(\d)/g, "($1) $2"); // Coloca parênteses em volta dos dois primeiros dígitos
-    celular = celular.replace(/(\d)(\d{4})$/, "$1-$2"); // Coloca hífen entre o quarto e o quinto dígitos
-    return celular;
+function formatarTelefone(telefone) {
+    telefone = telefone.replace(/\D/g, ""); // Remove tudo o que não é dígito
+    telefone = telefone.replace(/^(\d{2})(\d)/g, "($1) $2"); // Coloca parênteses em volta dos dois primeiros dígitos
+    telefone = telefone.replace(/(\d)(\d{4})$/, "$1-$2"); // Coloca hífen entre o quarto e o quinto dígitos
+    return telefone;
 }
 
 window.onload = function () {
@@ -24,7 +24,7 @@ window.onload = function () {
         aplicarMascara(this, formatarCPF);
     };
 
-    document.getElementById("celular").onkeyup = function () {
-        aplicarMascara(this, formatarCelular);
+    document.getElementById("telefone").onkeyup = function () {
+        aplicarMascara(this, formatarTelefone);
     };
 };

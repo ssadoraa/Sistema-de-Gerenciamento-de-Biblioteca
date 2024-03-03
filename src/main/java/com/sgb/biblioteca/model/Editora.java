@@ -20,7 +20,11 @@ public class Editora {
     private String cnpj;
     private String telefone;
     private String descricao;
-
+    
+    public static Editora empty(){
+        return new Editora(null, "", "", "", "", "");
+    }
+    
     public String formataCNPJ() {
         String numCNPJ = cnpj.replaceAll("[^0-9]", "");
 
@@ -41,10 +45,6 @@ public class Editora {
                 numTelefone.substring(7));
     }
    
-    public static Editora empty(){
-        return new Editora(null, "", "", "", "", "");
-    }
-
     public void limpaFormatacao() {
         if (cnpj != null) {
             cnpj = cnpj.replaceAll("[^0-9]", "");

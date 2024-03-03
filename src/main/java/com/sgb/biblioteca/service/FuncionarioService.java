@@ -2,26 +2,49 @@ package com.sgb.biblioteca.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.sgb.biblioteca.dao.FuncionarioDAO;
-import com.sgb.biblioteca.model.Funcionario;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import lombok.val;
+import com.sgb.biblioteca.model.UserRole;
+import java.util.stream.Collectors;
+import com.sgb.biblioteca.dao.UserDAO;
+import com.sgb.biblioteca.model.UserModel;
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
 public class FuncionarioService {
 
-    private FuncionarioDAO funcionarioDAO;
-
-    public void save(Funcionario funcionario){
-        funcionarioDAO.save(funcionario);
+    private UserDAO userDAO;
+    
+    private PasswordEncoder passwordEncoder;
+    
+    public void save(UserModel funcionario){
+        funcionario.setRole(UserRole.ATENDENTE);
+        funcionario.setPassword(passwordEncoder.encode(funcionario.getPassword()));
+        funcionario.limpaFormatacao();
+        userDAO.save(funcionario);
+    }
+    
+    public UserModel findFuncionarioById(Long id){
+        return userDAO.findById(id).orElse(null);
     }
 
-    public Funcionario findFuncionarioById(Long id){
-        return funcionarioDAO.findById(id).orElse(null);
+    public UserModel findByIdCamposFormatados(Long id){
+        val funcionario = userDAO.findById(id).orElse(null);
+        System.out.println(funcionario);
+        funcionario.setCpf(funcionario.formataCPF());
+        funcionario.setTelefone(funcionario.formataTelefone());
+        return funcionario;
     }
 
-    public List<Funcionario> findFuncionarioByQuery(String nome){
-        List<Funcionario> funcionarios = funcionarioDAO.funcionarioQuery(nome);
-        return funcionarios;
+    public List<UserModel> listagemFuncionarios(){
+        return userDAO.listagemFuncionario().stream().map(funcionario -> {
+            funcionario.setTelefone(funcionario.formataTelefone());
+            return funcionario;
+        }).collect(Collectors.toList());
+    }
+
+    public List<UserModel> findFuncionarioByQuery(String nome){
+        return userDAO.funcionarioQuery(nome);
     }
 }

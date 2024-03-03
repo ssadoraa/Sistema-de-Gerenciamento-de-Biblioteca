@@ -8,6 +8,8 @@
     <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
     <link href="../../../static/css/geral/cursor.css" th:href="@{/css/geral/cursor.css}" rel="stylesheet" media="screen">
     <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="../../../static/css/biblioteca/funcionario/style.css" th:href="@{/css/biblioteca/funcionario/style.css}" media="screen">
+    <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
 
 </head>
 
@@ -15,7 +17,7 @@
     <div th:replace="~{ layout/navbar :: navbar}"></div>
 
     <div class="container mt-5">
-        <h2 th:text="${(funcionario.id == null) ? 'Cadastrar Funcinário' : 'Editar Funcinário'}" class="mb-4">Cadastro de Funcinário</h2>
+        <h2 th:text="${(funcionario.id == null) ? 'Cadastrar Funcionário' : 'Editar Funcionário'}" class="mb-4">Cadastro de Funcionário</h2>
 
         <form method="post" th:action="@{/funcionario/new}">
 
@@ -32,13 +34,14 @@
                 </div>
                 <div class="col-md-6 form-group mt-2">
                     <label class="fw-bold" for="sexo">Gênero:</label>
-                    <select class="form-select" name="sexo" id="sexo">
-                        <option disabled selected value="">Selecione o gênero</option>
-                        <option th:each="s: ${sexos}" th:value="${s}" value="Masculino" th:text="${s.nome}" th:selected="${s == funcionario.sexo}">Masculino</option>
-                        <option th:if="false" value="Feminino">Feminino</option>
-                        <option th:if="false" value="Nao_informado">Prefiro não dizer</option>
-                        <option th:if="false" value="Outro">Outro</option>
+                    <select class="form-control" name="sexo" id="sexo">
+                        <option selected disabled value="">Selecione o gênero</option>
+                        <option value="Masculino" th:selected="${funcionario.sexo == 'Masculino'}">Masculino</option>
+                        <option value="Feminino" th:selected="${funcionario.sexo == 'Feminino'}">Feminino</option>
+                        <option value="Nao_informado" th:selected="${funcionario.sexo == 'Nao_informado'}">Prefiro não dizer</option>
+                        <option value="Outro" th:selected="${funcionario.sexo == 'Outro'}">Outro</option>
                     </select>
+
                 </div>
             </div>
             <div class="form-group mt-2">
@@ -51,8 +54,8 @@
             </div>
             <div class="row">
                 <div class="col-md-6 form-group mt-2">
-                    <label class="fw-bold" for="celular">Celular:</label>
-                    <input type="text" id="celular" name="celular" placeholder="(99) 9999-9999" maxlength="15" th:value="${funcionario.celular}" class="form-control" required>
+                    <label class="fw-bold" for="telefone">Telefone:</label>
+                    <input type="text" id="telefone" name="telefone" placeholder="(99) 9999-9999" maxlength="15" th:value="${funcionario.telefone}" class="form-control" required>
                 </div>
                 <div class="col-md-6 form-group mt-2">
                     <label class="fw-bold" for="descricao">E-mail:</label>
@@ -64,12 +67,22 @@
 
             <div class="row">
                 <div class="col-md-6 form-group mt-2">
-                    <label class="fw-bold" for="dataAdmissao">Data Admissão:</label>
-                    <input class="form-control blocked" th:value="${funcionario.dataAdmissao}" type="date" id="dataAdmissao" name="dataAdmissao" readonly>
+                    <label class="fw-bold" for="username">Username:</label>
+                    <input type="text" id="username" name="username" th:value="${funcionario.username}" class="form-control" placeholder="Username..." required>
                 </div>
                 <div class="col-md-6 form-group mt-2">
+                    <label class="fw-bold" for="password">Senha:</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Senha..." required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group mt-2">
                     <label class="fw-bold" for="cargo">Cargo:</label>
-                    <input class="form-control blocked" type="text" id="cargo" name="cargo" readonly value="Atendente">
+                    <input class="form-control blocked" type="text" id="cargo" name="cargo" readonly placeholder="Atendente">
+                </div>
+                <div class="col-md-6 form-group mt-2">
+                    <label class="fw-bold" for="dataCadastro">Data Admissão:</label>
+                    <input class="form-control blocked" type="date" id="dataCadastro" name="dataCadastro" th:value="${funcionario.dataCadastro}" readonly>
                 </div>
             </div>
 
@@ -80,6 +93,8 @@
             </div>
         </form>
     </div>
+
+    <div th:replace="~{ layout/footer :: footer}"></div>
 
     <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
     <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>

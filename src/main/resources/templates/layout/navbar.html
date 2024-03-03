@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Livro</title>
+    <title>Navbar</title>
 
     <link rel="stylesheet" href="../../static/css/3rd/bootstrap.min.css" media="screen" th:href="@{/css/3rd/bootstrap.min.css}">
 
 </head>
 
 <body>
-    <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+    <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="margin-left: 40px;">Biblioteca</a>
+            <a class="navbar-brand" href="../layout/home.html" th:href="@{/}" style=" margin-left: 40px;">Biblioteca</a>
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item dropdown">
@@ -41,6 +41,13 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../biblioteca/editora/list.html" th:href="@{/editora}">Listar editoras</a>
                             <a class="dropdown-item" href="../biblioteca/editora/edit.html" th:href="@{/editora/new}">Cadastrar</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Funcionários</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../biblioteca/funcionario/list.html" th:href="@{/funcionario}">Listar funcionários</a>
+                            <a class="dropdown-item" href="../biblioteca/funcionario/edit.html" th:href="@{/funcionario/new}">Cadastrar</a>
                         </div>
                     </li>
                 </ul>
