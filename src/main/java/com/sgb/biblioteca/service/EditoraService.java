@@ -29,8 +29,7 @@ public class EditoraService {
     }
 
     public List<Editora> findEditoraByQuery(String nome){
-        List<Editora> editoras = editoraDAO.editoraQuery(nome);
-        return editoras;
+        return editoraDAO.editoraQuery(nome);
     }
 
     public List<Editora> listagemEditoras(){

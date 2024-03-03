@@ -13,7 +13,7 @@ $(document).ready(function () {
           results: data.map(function (item) {
             return {
               id: item.id,
-              text: item.titulo + ' - ' + item.nome,
+              text: item.titulo + " - " + item.nome,
             };
           }),
         };
@@ -35,7 +35,7 @@ $(document).ready(function () {
           results: data.map(function (item) {
             return {
               id: item.id,
-              text: item.username + ' - ' + item.cpf,
+              text: item.nome + " - " + item.cpf,
             };
           }),
         };
@@ -43,25 +43,25 @@ $(document).ready(function () {
     },
   });
 
-  $('#funcionarioId').select2({
-      minimumInputLength: 3,
-      ajax: {
-          url: '/biblioteca/api/funcionarios',
-          data: function (params) {
-              return {
-                  busca: params.term,
-              };
-          },
-          processResults: function (data) {
-              return {
-                  results: data.map(function(item) {
-                      return {
-                          id: item.id,
-                          text: item.nome,
-                      };
-                  }),
-              };
-          },
+  $("#funcionarioId").select2({
+    minimumInputLength: 3,
+    ajax: {
+      url: "/biblioteca/api/funcionarios",
+      data: function (params) {
+        return {
+          busca: params.term,
+        };
       },
+      processResults: function (data) {
+        return {
+          results: data.map(function (item) {
+            return {
+              id: item.id,
+              text: item.nome,
+            };
+          }),
+        };
+      },
+    },
   });
 });

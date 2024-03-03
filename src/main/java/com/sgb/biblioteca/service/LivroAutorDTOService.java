@@ -18,8 +18,7 @@ public class LivroAutorDTOService {
     }
 
     public List<LivroAutorDTO> findLivroByQuery(String titulo){
-        List<LivroAutorDTO> livros = livroAutorDTODAO.livroAutorQuery(titulo);
-        return livros;
+        return livroAutorDTODAO.livroAutorQuery(titulo);
     }
 
 }

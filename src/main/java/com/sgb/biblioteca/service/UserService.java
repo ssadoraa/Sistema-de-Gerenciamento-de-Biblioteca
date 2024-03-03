@@ -28,8 +28,7 @@ public class UserService {
         return userDAO.findById(id).orElse(null);
     }
 
-    public List<UserModel> findUserByQuery(String username){
-        List<UserModel> users = userDAO.userQuery(username);
-        return users;
+    public List<UserModel> findUserByQuery(String queyr){
+        return userDAO.userQuery(queyr);
     }
 }

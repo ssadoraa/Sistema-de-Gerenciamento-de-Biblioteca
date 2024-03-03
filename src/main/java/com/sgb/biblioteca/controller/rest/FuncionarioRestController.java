@@ -2,7 +2,7 @@ package com.sgb.biblioteca.controller.rest;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sgb.biblioteca.model.Funcionario;
+import com.sgb.biblioteca.model.UserModel;
 import com.sgb.biblioteca.service.FuncionarioService;
 import lombok.AllArgsConstructor;
 import java.util.List;
@@ -21,7 +21,7 @@ public class FuncionarioRestController {
     
     @GetMapping
     @ResponseBody
-    public List<Funcionario> findByQuery(@RequestParam String busca){
+    public List<UserModel> findByQuery(@RequestParam String busca){
         return funcionarioService.findFuncionarioByQuery(busca);
     }
 
