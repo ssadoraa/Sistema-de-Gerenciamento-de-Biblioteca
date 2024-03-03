@@ -4,6 +4,7 @@ import com.sgb.biblioteca.dao.UserDAO;
 import com.sgb.biblioteca.model.UserModel;
 import com.sgb.biblioteca.model.UserRole;
 import lombok.AllArgsConstructor;
+import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +22,13 @@ public class UserService {
 
     public UserModel findByUsername(String username){
         return userDAO.findByUsername(username);
+    }
+    
+    public UserModel findUserById(Long id){
+        return userDAO.findById(id).orElse(null);
+    }
+
+    public List<UserModel> findUserByQuery(String queyr){
+        return userDAO.userQuery(queyr);
     }
 }

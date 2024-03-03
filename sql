@@ -36,9 +36,10 @@ create table livro (
 );
 
 create table user (
-    id BIGINT(20) NOT NULL AUTO_INCREMENT,
+	id BIGINT(20) NOT NULL,
     nome VARCHAR(100) NOT NULL,
-    data_nascimento date NOT NULL,
+    cpf VARCHAR(20) NOT NULL,
+    data_nascimento DATE NOT NULL,
     sexo VARCHAR(20) NOT NULL,
     cpf VARCHAR(20) NOT NULL,
     endereco VARCHAR(1000) NOT NULL,
@@ -65,6 +66,19 @@ CREATE TABLE funcionario (
     cargo varchar(50) DEFAULT 'atendente',
     PRIMARY KEY (id)
 )
+
+CREATE TABLE emprestimo (
+    id BIGINT(20) NOT NULL AUTO_INCREMENT,
+    livro_id BIGINT(20) NOT NULL,
+    user_id BIGINT(20) NOT NULL,
+    funcionario_id BIGINT(20) NOT NULL,
+    data_emprestimo DATE NOT NULL,
+    data_devolucao DATE NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT emprestimo_cliente_FK FOREIGN KEY (user_id) REFERENCES user (id),
+    CONSTRAINT emprestimo_funcionario_FK FOREIGN KEY (funcionario_id) REFERENCES funcionario (id),
+    CONSTRAINT emprestimo_livro_FK FOREIGN KEY (livro_id) REFERENCES livro (id)
+);
 
 insert into genero (id, nome)
 values

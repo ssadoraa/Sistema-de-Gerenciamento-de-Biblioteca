@@ -15,8 +15,12 @@
             <a class="navbar-brand" href="../layout/home.html" th:href="@{/}" style=" margin-left: 40px;">Biblioteca</a>
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Empréstimos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Empréstimos</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../biblioteca/emprestimo/list.html" th:href="@{/emprestimo}">Listar empréstimos</a>
+                            <a class="dropdown-item" href="../biblioteca/emprestimo/edit.html" th:href="@{/emprestimo/new}">Novo</a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Livros</a>

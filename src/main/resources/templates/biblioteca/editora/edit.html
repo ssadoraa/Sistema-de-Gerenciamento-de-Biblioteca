@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Editora</title>
-    
+
     <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen" />
     <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
 
 </head>
+
 <body>
     <div th:replace="~{ layout/navbar :: navbar}"></div>
 
@@ -39,11 +41,11 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                 <label class="fw-bold" for="descricao">Descrição:</label>
                 <textarea id="descricao" name="descricao" rows="4" th:text="${editora.descricao}" class="form-control" placeholder="Digite uma descrição da editora..." required></textarea>
             </div>
-            
+
             <div class="form-group mt-3 d-flex justify-content-end ">
-                <input type="submit" value="Salvar" class="btn btn-primary m-2">
-                <input type="reset" value="Limpar" class="btn btn-dark m-2">
-                <a class="voltar btn btn-secondary m-2" href="#" title="Cancelar cadastro" th:href="@{/editora}">Cancelar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary m-2 radius">
+                <input th:if="${editora.id == null}" type="reset" value="Limpar" class="btn btn-dark m-2 radius">
+                <a class="voltar btn btn-secondary m-2 radius" href="#" title="Cancelar cadastro" th:href="@{/editora}">Cancelar</a>
             </div>
         </form>
     </div>
@@ -55,4 +57,5 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <script src="../../../static/js/biblioteca/editora/edit.js" th:src="@{/js/biblioteca/editora/edit.js}"></script>
 
 </body>
+
 </html>

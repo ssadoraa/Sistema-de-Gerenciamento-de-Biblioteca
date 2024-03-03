@@ -27,6 +27,4 @@ window.onload = function () {
     document.getElementById("telefone").onkeyup = function () {
         aplicarMascara(this, formatarTelefone);
     };
-
-    document.getElementById("dataAdmissao").valueAsDate = new Date();
 };

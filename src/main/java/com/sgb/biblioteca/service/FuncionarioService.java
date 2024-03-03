@@ -1,10 +1,10 @@
 package com.sgb.biblioteca.service;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import lombok.val;
 import com.sgb.biblioteca.model.UserRole;
-import java.util.List;
 import java.util.stream.Collectors;
 import com.sgb.biblioteca.dao.UserDAO;
 import com.sgb.biblioteca.model.UserModel;
@@ -42,5 +42,9 @@ public class FuncionarioService {
             funcionario.setTelefone(funcionario.formataTelefone());
             return funcionario;
         }).collect(Collectors.toList());
+    }
+
+    public List<UserModel> findFuncionarioByQuery(String nome){
+        return userDAO.funcionarioQuery(nome);
     }
 }

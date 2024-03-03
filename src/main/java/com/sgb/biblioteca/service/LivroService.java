@@ -29,6 +29,10 @@ public class LivroService {
         return livroDAO.findById(id).orElse(null);
     }
 
+    public List<Livro> findLivroByQuery(String titulo){
+        List<Livro> livros = livroDAO.livroQuery(titulo);
+        return livros;
+    }
 
     // Métodos para a classe LivroComDependencias
     public LivroComDependencia findLivroComDependenciaById(Long id){
