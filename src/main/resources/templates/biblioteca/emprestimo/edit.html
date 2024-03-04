@@ -30,21 +30,21 @@
             <div class="form-group">
                 <label class="fw-bold" for="livroId">Livro:</label>
                 <select id="livroId" name="livroId" class="form-control" required>
-                    <option th:selected="${emprestimo.livroId == null}" th:text="${emprestimo.livroId == null ? 'Selecione um livro' : livro.titulo + ' - ' + livro.nome}" th:value="${emprestimo.livroId == null ? null : livro.id}">
+                    <option th:selected="${emprestimo.livroId == null}" th:text="${emprestimo.livroId == null ? 'Selecione um livro' : livro.text}" th:value="${emprestimo.livroId == null ? null : livro.id}">
                     </option>
                 </select>
             </div>
             <div class="form-group mt-2">
                 <label class="fw-bold" for="userId">Cliente:</label>
                 <select id="userId" name="userId" class="form-control" required>
-                    <option th:selected="${emprestimo.userId == null}" th:text="${emprestimo.userId == null ? 'Selecione um cliente (pelo cpf)' : user.nome + ' - ' + user.cpf}" th:value="${emprestimo.userId == null ? null : user.id}">
+                    <option th:selected="${emprestimo.userId == null}" th:text="${emprestimo.userId == null ? 'Selecione um cliente (pelo cpf)' : user.text}" th:value="${emprestimo.userId == null ? null : user.id}">
                     </option>
                 </select>
             </div>
             <div class="form-group mt-2">
                 <label class="fw-bold" for="funcionarioId">Funcionário:</label>
                 <select id="funcionarioId" name="funcionarioId" class="form-control" required>
-                    <option th:selected="${emprestimo.funcionarioId == null}" th:text="${emprestimo.funcionarioId == null ? 'Selecione um funcionario' : funcionario.nome}" th:value="${emprestimo.funcionarioId == null ? null : funcionario.id}">
+                    <option th:selected="${emprestimo.funcionarioId == null}" th:text="${emprestimo.funcionarioId == null ? 'Selecione um funcionario' : funcionario.text}" th:value="${emprestimo.funcionarioId == null ? null : funcionario.id}">
                     </option>
                 </select>
             </div>
