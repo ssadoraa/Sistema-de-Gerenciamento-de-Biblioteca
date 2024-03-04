@@ -5,7 +5,6 @@ import com.sgb.biblioteca.model.Livro;
 import com.sgb.biblioteca.model.DTOs.LivroAutorDTO;
 import com.sgb.biblioteca.model.comDependencias.LivroComDependencia;
 import lombok.AllArgsConstructor;
-import java.util.Optional;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -34,12 +33,12 @@ public class LivroService {
         return livros;
     }
 
-    // Métodos para a classe LivroComDependencias
-    public LivroComDependencia findLivroComDependenciaById(Long id){
-        return findComDependencias(id).orElse(null);
+    public List<LivroAutorDTO> listagemLivros(){
+        return livroDAO.listagemLivros();
     }
-
-    public Optional<LivroComDependencia> findComDependencias(Long id){
+    
+    // Método para a classe LivroComDependencias
+    public LivroComDependencia findLivroComDependenciaById(Long id) {
         return livroDAO.findById(id)
             .map(livro -> {
                 try {
@@ -54,13 +53,9 @@ public class LivroService {
                         livro.getQuantidade()
                     );
                 } catch (Exception e) {
-                    throw new RuntimeException("Erro ao obter dependencias do livro " + e);
+                    throw new RuntimeException("Erro ao obter dependências do livro " + e);
                 }
-            });
-    }
-
-    public List<LivroAutorDTO> listagemLivros(){
-        return livroDAO.listagemLivros();
-    }
-    
+            })
+            .orElse(null);
+    }   
 }

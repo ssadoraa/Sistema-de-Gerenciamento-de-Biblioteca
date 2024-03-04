@@ -32,6 +32,14 @@ public class EmprestimoController {
 
     private FuncionarioService funcionarioService;
 
+    @GetMapping()
+    public ModelAndView list() {
+        val emprestimos = emprestimoService.listagemEmprestimos();
+        return new ModelAndView("biblioteca/emprestimo/list")
+            .addObject("emprestimos", emprestimos);
+    }
+    
+
     @GetMapping("/new")
     public ModelAndView novo(){
         return novoEdit(Emprestimo.empty());
@@ -42,7 +50,7 @@ public class EmprestimoController {
         val emprestimo = emprestimoService.findEmprestimoById(id);
         return novoEdit(emprestimo);
     }
-
+    
     private ModelAndView novoEdit(Emprestimo emprestimo){
         LivroAutorDTO livro = null;
         UserModel user = null;
@@ -68,4 +76,10 @@ public class EmprestimoController {
         return "emprestimo/list";
     }
     
+    @GetMapping("/{id}")
+    public ModelAndView get(@PathVariable Long id) {
+        val emprestimo = emprestimoService.findEmprestimoComDependenciaById(id);
+        return new ModelAndView("biblioteca/emprestimo/get")
+            .addObject("emprestimo", emprestimo);
+    }
 }
