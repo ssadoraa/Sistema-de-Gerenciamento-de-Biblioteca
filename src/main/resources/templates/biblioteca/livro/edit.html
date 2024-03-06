@@ -69,7 +69,7 @@
             <div class="form-group mt-3 d-flex justify-content-end ">
                 <input type="submit" value="Salvar" class="btn btn-primary m-2 radius">
                 <input th:if="${livro.id == null}" type="reset" value="Limpar" class="btn btn-dark m-2 radius">
-                <a class="voltar btn btn-secondary m-2 radius" href="edit.html" title="Cancelar cadastro" th:href="@{/livro/{id}(id=${livro.id})}">Cancelar</a>
+                <a class="voltar btn btn-secondary m-2 radius" href="list.html" title="Cancelar cadastro" th:href="${livro.id != null} ? @{/livro/{id}(id=${livro.id})} : @{/livro}">Cancelar</a>
             </div>
         </form>
     </div>

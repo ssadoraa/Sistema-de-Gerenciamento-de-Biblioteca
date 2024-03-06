@@ -45,7 +45,8 @@
             <div class="form-group mt-3 d-flex justify-content-end ">
                 <input type="submit" value="Salvar" class="btn btn-primary m-2 radius">
                 <input th:if="${editora.id == null}" type="reset" value="Limpar" class="btn btn-dark m-2 radius">
-                <a class="voltar btn btn-secondary m-2 radius" href="#" title="Cancelar cadastro" th:href="@{/editora/{id}(id=${editora.id})}">Cancelar</a>
+                <a class="voltar btn btn-secondary m-2 radius" href="list.html" title="Cancelar cadastro" 
+                th:href="${editora.id != null} ? @{/editora/{id}(id=${editora.id})} : @{/editora}">Cancelar</a>
             </div>
         </form>
     </div>

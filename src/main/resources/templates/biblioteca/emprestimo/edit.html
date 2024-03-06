@@ -6,8 +6,8 @@
     <title>Cadastro Empréstimo</title>
 
     <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-    <link rel="stylesheet" href="../../../static/css/geral/select2.css" th:href="@{/css/geral/select2.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" media="screen">
+    <link href="../../../static/css/geral/select2.css" th:href="@{/css/geral/select2.css}" rel="stylesheet" media="screen">
     <link href="../../../static/css/geral/cursor.css" th:href="@{/css/geral/cursor.css}" rel="stylesheet" media="screen">
     <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen">
     <link href="../../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen">
@@ -65,7 +65,8 @@
             <div class="form-group mt-3 d-flex justify-content-end ">
                 <input type="submit" value="Salvar" class="btn btn-primary m-2 radius">
                 <input th:if="${emprestimo.id == null}" type="reset" value="Limpar" class="btn btn-dark m-2 radius">
-                <a class="voltar btn btn-secondary m-2 radius" href="#" title="Cancelar cadastro" th:href="@{/emprestimo}">Cancelar</a>
+                <a class="voltar btn btn-secondary m-2 radius" href="list.html" title="Cancelar cadastro" 
+                th:href="${emprestimo.id != null} ? @{/emprestimo/{id}(id=${emprestimo.id})} : @{/emprestimo}">Cancelar</a>
             </div>
         </form>
     </div>
