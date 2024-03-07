@@ -43,10 +43,8 @@
             </div>
             <div class="form-group mt-2">
                 <label class="fw-bold" for="funcionarioId">Funcionário:</label>
-                <select id="funcionarioId" name="funcionarioId" class="form-control" required>
-                    <option th:selected="${emprestimo.funcionarioId == null}" th:text="${emprestimo.funcionarioId == null ? 'Selecione um funcionario' : funcionario.nome}" th:value="${emprestimo.funcionarioId == null ? null : funcionario.id}">
-                    </option>
-                </select>
+                <span th:text="${funcionario.nome}" id="funcionario" class="form-control blocked" readonly></span>
+                <input type="hidden" id="funcionarioId" name="funcionarioId" th:value="${funcionario.id}">
             </div>
 
             <hr class="mt-4">
