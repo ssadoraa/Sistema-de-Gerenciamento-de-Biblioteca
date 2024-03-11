@@ -26,12 +26,12 @@
                 <input type="text" id="nome" name="nome" th:value="${editora.nome}" class="form-control" placeholder="Editora..." required>
             </div>
             <div class="form-group mt-2">
-                <label class="fw-bold" for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" th:value="${editora.endereco}" class="form-control" placeholder="Endereço..." required>
-            </div>
-            <div class="form-group mt-2">
                 <label class="fw-bold" for="cnpj">CNPJ:</label>
                 <input type="text" id="cnpj" name="cnpj" placeholder="99.999.999/9999-99" maxlength="18" th:value="${editora.cnpj}" class="form-control" required>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="endereco">Endereço Completo (Rua/Avenida, Nº - Bairro - Cidade/UF):</label>
+                <input type="text" id="endereco" name="endereco" th:value="${editora.endereco}" class="form-control" placeholder="Endereço..." required>
             </div>
             <div class="form-group mt-2">
                 <label class="fw-bold" for="telefone">Telefone:</label>
@@ -45,16 +45,17 @@
             <div class="form-group mt-3 d-flex justify-content-end ">
                 <input type="submit" value="Salvar" class="btn btn-primary m-2 radius">
                 <input th:if="${editora.id == null}" type="reset" value="Limpar" class="btn btn-dark m-2 radius">
-                <a class="voltar btn btn-secondary m-2 radius" href="#" title="Cancelar cadastro" th:href="@{/editora}">Cancelar</a>
+                <a class="voltar btn btn-secondary m-2 radius" href="list.html" title="Cancelar cadastro" 
+                th:href="${editora.id != null} ? @{/editora/{id}(id=${editora.id})} : @{/editora}">Cancelar</a>
             </div>
         </form>
     </div>
 
     <div th:replace="~{ layout/footer :: footer}"></div>
 
-<script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
-<script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
-<script src="../../../static/js/biblioteca/editora/edit.js" th:src="@{/js/biblioteca/editora/edit.js}"></script>
+    <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+    <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script src="../../../static/js/biblioteca/editora/edit.js" th:src="@{/js/biblioteca/editora/edit.js}"></script>
 
 </body>
 
