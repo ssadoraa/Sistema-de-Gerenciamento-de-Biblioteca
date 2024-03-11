@@ -17,12 +17,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "emprestimo")
 public class Emprestimo {
-    @Id Long id;
-    @NotNull Long livroId;
-    @NotNull Long userId;
-    @NotNull Long funcionarioId;
-    LocalDate dataEmprestimo;
-    LocalDate dataDevolucao;
+    @Id private Long id;
+    @NotNull private Long livroId;
+    @NotNull private Long userId;
+    @NotNull private Long funcionarioId;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataDevolucao;
     
     public static Emprestimo empty() {
         return new Emprestimo(null, null, null, null, LocalDate.now(), LocalDate.now().plusDays(45));

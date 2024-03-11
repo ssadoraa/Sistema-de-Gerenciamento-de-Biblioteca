@@ -12,6 +12,10 @@ public class AutorService {
 
     private AutorDAO autorDAO;
 
+    public void save(Autor autor){
+        autorDAO.save(autor);
+    }
+
     public Autor findById(Long id){
         return autorDAO.findById(id).orElse(null);
     }
