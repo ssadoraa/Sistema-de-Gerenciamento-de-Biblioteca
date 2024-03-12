@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.sgb.biblioteca.model.Emprestimo;
 import com.sgb.biblioteca.model.UserModel;
 import com.sgb.biblioteca.model.DTOs.LivroAutorDTO;
@@ -71,9 +70,9 @@ public class EmprestimoController {
     
     @PostMapping("/new")
     public String post(Emprestimo emprestimo, RedirectAttributes redirectAttributes){
-        emprestimoService.save(emprestimo);;
+        emprestimoService.save(emprestimo);
         redirectAttributes.addAttribute("id", emprestimo.getId());
-        return "emprestimo/list";
+        return "redirect:/emprestimo/{id}";
     }
     
     @GetMapping("/{id}")

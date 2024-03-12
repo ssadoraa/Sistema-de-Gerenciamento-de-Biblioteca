@@ -6,7 +6,7 @@ import com.sgb.biblioteca.dao.EmprestimoDAO;
 import com.sgb.biblioteca.model.Emprestimo;
 import com.sgb.biblioteca.model.DTOs.EmprestimoDTO;
 import com.sgb.biblioteca.model.comDependencias.EmprestimoComDependencia;
-
+import lombok.val;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -20,6 +20,9 @@ public class EmprestimoService {
     private LivroService livroService;
 
     public void save(Emprestimo emprestimo){
+        val livro = livroService.findLivroById(emprestimo.getLivroId());
+        livro.setQuantidade(livro.getQuantidade() - 1);
+        livroService.save(livro);
         emprestimoDAO.save(emprestimo);
     }
 
