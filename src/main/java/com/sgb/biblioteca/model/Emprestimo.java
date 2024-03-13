@@ -21,10 +21,11 @@ public class Emprestimo {
     @NotNull Long livroId;
     @NotNull Long userId;
     @NotNull Long funcionarioId;
-    LocalDate dataEmprestimo;
-    LocalDate dataDevolucao;
+    @NotNull LocalDate dataEmprestimo;
+    @NotNull LocalDate dataDevolucao;
+    @NotNull Situacao situacao;
     
     public static Emprestimo empty() {
-        return new Emprestimo(null, null, null, null, LocalDate.now(), LocalDate.now().plusDays(45));
+        return new Emprestimo(null, null, null, null, LocalDate.now(), LocalDate.now().plusDays(45), Situacao.ABERTO);
     }
 }

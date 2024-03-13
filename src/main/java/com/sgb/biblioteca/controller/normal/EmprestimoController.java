@@ -29,16 +29,29 @@ public class EmprestimoController {
     private LivroAutorDTOService livroAutorDTOService;
 
     private UserService userService;
-
+    
     private FuncionarioService funcionarioService;
-
+    
     @GetMapping()
     public ModelAndView list() {
         val emprestimos = emprestimoService.listagemEmprestimos();
         return new ModelAndView("biblioteca/emprestimo/list")
-            .addObject("emprestimos", emprestimos);
+        .addObject("emprestimos", emprestimos);
+    }
+
+    @GetMapping("/aberto")
+    public ModelAndView listAbertos() {
+        val emprestimos = emprestimoService.listagemEmprestimosAbertos();
+        return new ModelAndView("biblioteca/emprestimo/abertos/list")
+        .addObject("emprestimos", emprestimos);
     }
     
+    @GetMapping("/{id}")
+    public ModelAndView get(@PathVariable Long id) {
+        val emprestimo = emprestimoService.findEmprestimoComDependenciaById(id);
+        return new ModelAndView("biblioteca/emprestimo/get")
+            .addObject("emprestimo", emprestimo);
+    }
 
     @GetMapping("/new")
     public ModelAndView novo(){
@@ -76,10 +89,11 @@ public class EmprestimoController {
         return "emprestimo/list";
     }
     
-    @GetMapping("/{id}")
-    public ModelAndView get(@PathVariable Long id) {
-        val emprestimo = emprestimoService.findEmprestimoComDependenciaById(id);
-        return new ModelAndView("biblioteca/emprestimo/get")
-            .addObject("emprestimo", emprestimo);
+    @PostMapping("/encerrar")
+    public String encerrar(Long id, RedirectAttributes redirectAttributes){
+        val emprestimo = emprestimoService.encerrarEmprestimo(id);
+        redirectAttributes.addAttribute("id", emprestimo.getId());
+        redirectAttributes.addFlashAttribute("mensagem", "Empréstimo encerrado com sucesso!");
+        return "redirect:/emprestimo/{id}";
     }
 }
