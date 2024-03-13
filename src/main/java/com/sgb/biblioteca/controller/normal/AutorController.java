@@ -3,7 +3,6 @@ package com.sgb.biblioteca.controller.normal;
 import org.springframework.stereotype.Controller;
 import lombok.AllArgsConstructor;
 import lombok.val;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.sgb.biblioteca.model.Autor;
 import com.sgb.biblioteca.service.AutorService;
 
-
 @Controller
 @AllArgsConstructor
 @RequestMapping("/autor")
@@ -21,6 +19,21 @@ import com.sgb.biblioteca.service.AutorService;
 public class AutorController {
 
     private AutorService autorService;
+
+    @GetMapping()
+    public ModelAndView list() {
+        val autores = autorService.listagemAutores();
+        return new ModelAndView("biblioteca/autor/list")
+            .addObject("autores", autores);
+    }
+    
+
+    @GetMapping("/{id}")
+    public ModelAndView get(@PathVariable Long id) {
+        val autor = autorService.findById(id);
+        return new ModelAndView("biblioteca/autor/get")
+            .addObject("autor", autor);
+    }
 
     @GetMapping("/new")    
     public ModelAndView novo(){

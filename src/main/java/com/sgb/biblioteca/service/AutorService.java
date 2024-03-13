@@ -23,5 +23,9 @@ public class AutorService {
     public List<Autor> findAutorByQuery(String nome){
         return autorDAO.autorQuery(nome);
     }
+
+    public List<Autor> listagemAutores(){
+        return autorDAO.findAllAutores();
+    }
     
 }
