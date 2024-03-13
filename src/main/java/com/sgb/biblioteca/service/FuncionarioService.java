@@ -31,7 +31,6 @@ public class FuncionarioService {
 
     public UserModel findByIdCamposFormatados(Long id){
         val funcionario = userDAO.findById(id).orElse(null);
-        System.out.println(funcionario);
         funcionario.setCpf(funcionario.formataCPF());
         funcionario.setTelefone(funcionario.formataTelefone());
         return funcionario;
@@ -42,9 +41,5 @@ public class FuncionarioService {
             funcionario.setTelefone(funcionario.formataTelefone());
             return funcionario;
         }).collect(Collectors.toList());
-    }
-
-    public List<UserModel> findFuncionarioByQuery(String nome){
-        return userDAO.funcionarioQuery(nome);
     }
 }
