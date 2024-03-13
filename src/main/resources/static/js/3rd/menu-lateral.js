@@ -10,6 +10,7 @@ fetch("/biblioteca/api")
         document.getElementById('username').value = username;
         document.getElementById('email').value = email;
         document.getElementById('role').value = role;
+        document.querySelector('.editar-usuario').href = `/biblioteca/usuario/${id}/edit`;
     })
     .catch((error) => {
         console.error("Ocorreu um erro:", error);

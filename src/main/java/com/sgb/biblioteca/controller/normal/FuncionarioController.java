@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.sgb.biblioteca.model.UserModel;
-import com.sgb.biblioteca.service.FuncionarioService;
+import com.sgb.biblioteca.service.UserService;
 
 
 @Controller
@@ -19,11 +18,11 @@ import com.sgb.biblioteca.service.FuncionarioService;
 @RequestMapping("/funcionario")
 public class FuncionarioController {
 
-    private FuncionarioService funcionarioService;
+    private UserService userService;
 
     @GetMapping("/{id}")
     public ModelAndView get(@PathVariable Long id) {
-        val funcionario = funcionarioService.findByIdCamposFormatados(id);
+        val funcionario = userService.findByIdCamposFormatados(id);
         return new ModelAndView("biblioteca/funcionario/get")
             .addObject("funcionario", funcionario);
     }
@@ -36,7 +35,7 @@ public class FuncionarioController {
     
     @GetMapping("/{id}/edit")
     public ModelAndView edit(@PathVariable Long id) {
-        val funcionario = funcionarioService.findByIdCamposFormatados(id);
+        val funcionario = userService.findByIdCamposFormatados(id);
         return novoEdit(funcionario);
     }
 
@@ -47,14 +46,14 @@ public class FuncionarioController {
 
     @PostMapping("/new")
     public String post(UserModel funcionario, RedirectAttributes redirectAttributes){
-        funcionarioService.save(funcionario);
+        userService.saveNewFuncionario(funcionario);
         redirectAttributes.addAttribute("id", funcionario.getId());
         return "redirect:/funcionario/{id}";
     }
 
     @GetMapping("")
     public ModelAndView list() {
-        val funcionarios = funcionarioService.listagemFuncionarios();
+        val funcionarios = userService.listagemFuncionarios();
         return new ModelAndView("biblioteca/funcionario/list")
             .addObject("funcionarios", funcionarios);
     }

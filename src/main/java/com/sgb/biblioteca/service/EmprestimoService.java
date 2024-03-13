@@ -39,8 +39,8 @@ public class EmprestimoService {
                     return new EmprestimoComDependencia(
                         emprestimo.getId(),
                         livroService.findLivroById(emprestimo.getLivroId()),
-                        userService.findUserById(emprestimo.getUserId()),
-                        userService.findUserById(emprestimo.getFuncionarioId()),
+                        userService.findById(emprestimo.getUserId()),
+                        userService.findById(emprestimo.getFuncionarioId()),
                         emprestimo.getDataEmprestimo(),
                         emprestimo.getDataDevolucao()
                     );

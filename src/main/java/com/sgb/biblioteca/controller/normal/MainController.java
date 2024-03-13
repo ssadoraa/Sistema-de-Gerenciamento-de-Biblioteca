@@ -14,8 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
     
     @GetMapping()
-    public ModelAndView get() {
+    public ModelAndView getHome() {
         return new ModelAndView("layout/home");
+    }
+
+    @GetMapping("/login")
+    public ModelAndView getLogin(){
+        return new ModelAndView("layout/login");
     }
     
 }
