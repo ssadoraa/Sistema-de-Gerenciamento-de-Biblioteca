@@ -14,4 +14,12 @@ public class LivroAutorDTO {
     String titulo;
     String nome;
     Integer quantidade;
+
+    public String quantidadeDisponivel() {
+        if (quantidade <= 0) {
+            return "<span class=\"text-danger fw-bold\">Livro não disponível</span>";
+        }
+
+        return "<span class=\"text-primary\">" + quantidade + " cópias</span>";
+    }
 }

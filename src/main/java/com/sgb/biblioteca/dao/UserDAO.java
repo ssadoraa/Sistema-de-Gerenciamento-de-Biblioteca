@@ -17,9 +17,4 @@ public interface UserDAO extends CrudRepository<UserModel, Long> {
            " WHERE u.role = 'ATENDENTE' " +
            " ORDER BY u.nome;")
     List<UserModel> listagemFuncionario();
-
-    @Query("SELECT u.id, u.nome FROM biblioteca.user u "
-           + " WHERE u.nome LIKE CONCAT('%', :nome, '%')"
-           + " AND u.role = 'ATENDENTE';")
-    List<UserModel> funcionarioQuery(String nome);
 }

@@ -2,9 +2,14 @@ package com.sgb.biblioteca.service;
 
 import com.sgb.biblioteca.dao.UserDAO;
 import com.sgb.biblioteca.model.UserModel;
-import com.sgb.biblioteca.model.UserRole;
+import com.sgb.biblioteca.model.Role;
 import lombok.AllArgsConstructor;
+import lombok.val;
+
 import java.util.List;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +20,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public void save(UserModel user){
-        user.setRole(UserRole.USER);
+        user.setRole(Role.USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.save(user);
     }
@@ -30,5 +35,10 @@ public class UserService {
 
     public List<UserModel> findUserByQuery(String queyr){
         return userDAO.userQuery(queyr);
+    }
+
+    public String identificacaoLogado() {
+        val authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
     }
 }

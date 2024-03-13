@@ -1,12 +1,15 @@
 package com.sgb.biblioteca.config;
 
+import com.sgb.biblioteca.model.Role;
 import com.sgb.biblioteca.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,14 +22,52 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
-        http.authorizeHttpRequests(request -> request.requestMatchers("/css/**", "/js/**", "/cadastro", "/login")
-                .permitAll()
-                .anyRequest()
-                .authenticated())
+        http.authorizeHttpRequests(request -> applyAuths(request))
                 .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/", true).permitAll())
                 .logout(LogoutConfigurer::permitAll);
         return http.build();
+    }
+
+    private void applyAuths(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry authz) {
+        authz
+            .requestMatchers(HttpMethod.GET, "/css/**", "/js/**", "/images/**").permitAll()
+            .requestMatchers(HttpMethod.GET, "/").authenticated()
+            
+
+            // Usuário
+            .requestMatchers(HttpMethod.GET, "/cadastro", "/login").permitAll()
+
+
+            // Funcionário
+            .requestMatchers(HttpMethod.GET,  "/funcionario", "/funcionario/{id}").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
+            .requestMatchers(HttpMethod.GET, "/funcionario/new", "/funcionario/{id}/edit").hasRole(Role.STR.ADMIN)
+            .requestMatchers(HttpMethod.POST, "/funcionario/new").hasRole(Role.STR.ADMIN)
+
+            
+            // Livro
+            .requestMatchers(HttpMethod.GET,  "/livro", "/livro/{id}").authenticated()
+            .requestMatchers(HttpMethod.GET, "/livro/new", "/livro/{id}/edit").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+            .requestMatchers(HttpMethod.POST, "/livro/new").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+            
+            
+            // Editora
+            .requestMatchers(HttpMethod.GET,  "/editora", "/editora/{id}").authenticated()
+            .requestMatchers(HttpMethod.GET, "/editora/new", "/editora/{id}/edit").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+            .requestMatchers(HttpMethod.POST, "/editora/new").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+            
+            
+            // Autor
+            .requestMatchers(HttpMethod.GET,  "/autor", "/autor/{id}").authenticated()
+            .requestMatchers(HttpMethod.GET, "/autor/new", "/autor/{id}/edit").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+            .requestMatchers(HttpMethod.POST, "/autor/new").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+            
+            
+            // Empréstimo
+            .requestMatchers(HttpMethod.GET,  "/emprestimo", "/emprestimo/{id}").authenticated()
+            .requestMatchers(HttpMethod.GET, "/emprestimo/new", "/emprestimo/{id}/edit").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+            .requestMatchers(HttpMethod.POST, "/emprestimo/new").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+
+            ;
     }
 
     @Bean

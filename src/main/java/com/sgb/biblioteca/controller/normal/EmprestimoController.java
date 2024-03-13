@@ -1,5 +1,4 @@
 package com.sgb.biblioteca.controller.normal;
-
 import org.springframework.stereotype.Controller;
 import lombok.AllArgsConstructor;
 import lombok.val;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.sgb.biblioteca.model.Emprestimo;
 import com.sgb.biblioteca.model.UserModel;
 import com.sgb.biblioteca.model.DTOs.LivroAutorDTO;
@@ -67,12 +65,11 @@ public class EmprestimoController {
     private ModelAndView novoEdit(Emprestimo emprestimo){
         LivroAutorDTO livro = null;
         UserModel user = null;
-        UserModel funcionario = null;
+        UserModel funcionario = userService.findByUsername(userService.identificacaoLogado());
 
         if (emprestimo.getId() != null){
             livro = livroAutorDTOService.findLivroAutorDTOById(emprestimo.getLivroId());
             user = userService.findUserById(emprestimo.getUserId());
-            funcionario = funcionarioService.findFuncionarioById(emprestimo.getFuncionarioId());
         }
 
         return new ModelAndView("biblioteca/emprestimo/edit")
@@ -84,9 +81,9 @@ public class EmprestimoController {
     
     @PostMapping("/new")
     public String post(Emprestimo emprestimo, RedirectAttributes redirectAttributes){
-        emprestimoService.save(emprestimo);;
+        emprestimoService.save(emprestimo);
         redirectAttributes.addAttribute("id", emprestimo.getId());
-        return "emprestimo/list";
+        return "redirect:/emprestimo/{id}";
     }
     
     @PostMapping("/encerrar")

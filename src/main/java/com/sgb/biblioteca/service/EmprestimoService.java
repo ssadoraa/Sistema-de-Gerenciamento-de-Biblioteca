@@ -23,6 +23,10 @@ public class EmprestimoService {
     private LivroService livroService;
 
     public void save(Emprestimo emprestimo){
+        val livro = livroService.findLivroById(emprestimo.getLivroId());
+        livro.setQuantidade(livro.getQuantidade() - 1);
+        livroService.save(livro);
+        
         emprestimo.setSituacao(Situacao.ABERTO);
         emprestimoDAO.save(emprestimo);
     }
