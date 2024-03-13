@@ -5,13 +5,8 @@
     <meta charset="UTF-8">
     <title>Listar Livros</title>
 
-    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
     <link href="../../../static/css/geral/table.css" th:href="@{/css/geral/table.css}" rel="stylesheet" media="screen" />
-    <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 </head>
 
@@ -49,8 +44,7 @@
     <div th:replace="~{ layout/paginacao :: paginacao}"></div>
     <div th:replace="~{ layout/footer :: footer}"></div>
 
-    <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
-    <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script type="module" src="../../../static/js/script.js" th:src="@{/js/script.js}"></script>
 
 </body>
 

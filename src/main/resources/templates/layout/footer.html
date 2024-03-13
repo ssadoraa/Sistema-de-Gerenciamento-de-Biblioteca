@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Footer</title>
-    
-    <link rel="stylesheet" href="../../static/css/3rd/bootstrap.min.css" media="screen" th:href="@{/css/3rd/bootstrap.min.css}">
-    <link rel="stylesheet" href="../../static/css/geral/footer.css" media="screen" th:href="@{/css/geral/footer.css}">
+  <meta charset="UTF-8">
+  <title>Footer</title>
+
+  <link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 
 </head>
+
 <body>
 
-<footer th:fragment="footer" class="footer">
-  <div class="container text-center">
-    <span>&copy; 2024 Biblioteca. Todos os direitos reservados.</span>
-  </div>
-</footer>
+  <footer th:fragment="footer" class="footer">
+    <div class="container text-center">
+      <span>&copy; 2024 Biblioteca. Todos os direitos reservados.</span>
+    </div>
+  </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="module" src="../../../static/js/script.js" th:src="@{/js/script.js}"></script>
+
 </body>
+
 </html>

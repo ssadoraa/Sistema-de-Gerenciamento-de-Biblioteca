@@ -5,9 +5,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <meta charset="UTF-8">
     <title>Visualizar Editora</title>
     
-    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
-    <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen" /> 
-    <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
+    <link href="../../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 
 </head>
 <body>
@@ -51,15 +49,14 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             <a type="submit" class="btn btn-primary m-2 radius" title="Editar Editora"
                href="edit.html" th:href="@{/editora/{id}/edit(id=${editora.id})}"
             >Editar</a>
-            <a class="voltar btn btn-secondary m-2 radius" href="#" title="Voltar a listagem de editoras" th:href="@{/editora}">Voltar</a>
+            <a class="btn btn-secondary m-2 radius" href="#" title="Voltar a listagem de editoras" th:href="@{/editora}">Voltar</a>
         </div>
     </div>
 
     <div th:replace="~{ layout/footer :: footer}"></div>
 
-<script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
-<script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
-<script src="../../../static/js/biblioteca/editora/edit.js" th:src="@{/js/biblioteca/editora/edit.js}"></script>
+    <script type="module" src="../../../static/js/script.js" th:src="@{/js/script.js}"></script>
+    <script src="../../../static/js/biblioteca/editora/edit.js" th:src="@{/js/biblioteca/editora/edit.js}"></script>
 
 </body>
 </html>

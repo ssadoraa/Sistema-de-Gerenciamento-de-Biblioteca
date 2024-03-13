@@ -20,3 +20,12 @@
 .btn-table {
   border-radius: 10px;
 }
+
+.btn-mini {
+  width: 80px;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}

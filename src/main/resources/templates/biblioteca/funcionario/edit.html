@@ -5,11 +5,7 @@
     <meta charset="UTF-8">
     <title>Cadastrar Funcionário</title>
 
-    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
-    <link href="../../../static/css/geral/cursor.css" th:href="@{/css/geral/cursor.css}" rel="stylesheet" media="screen">
-    <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="../../../static/css/biblioteca/funcionario/style.css" th:href="@{/css/biblioteca/funcionario/style.css}" media="screen">
-    <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
+    <link href="../../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 
 </head>
 
@@ -89,8 +85,7 @@
             <div class="form-group mt-3 d-flex justify-content-end ">
                 <input type="submit" value="Salvar" class="btn btn-primary m-2 radius">
                 <input th:if="${funcionario.id == null}" type="reset" value="Limpar" class="btn btn-dark m-2 radius">
-                <a class="voltar btn btn-secondary m-2 radius" href="list.html" title="Cancelar cadastro" 
-                th:href="${funcionario.id != null} ? @{/funcionario/{id}(id=${funcionario.id})} : @{/funcionario}">Cancelar</a>
+                <a class="btn btn-secondary m-2 radius" href="list.html" title="Cancelar cadastro" th:href="${funcionario.id != null} ? @{/funcionario/{id}(id=${funcionario.id})} : @{/funcionario}">Cancelar</a>
 
             </div>
         </form>
@@ -98,8 +93,7 @@
 
     <div th:replace="~{ layout/footer :: footer}"></div>
 
-    <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
-    <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script type="module" src="../../../static/js/script.js" th:src="@{/js/script.js}"></script>
     <script src="../../../static/js/biblioteca/funcionario/edit.js" th:src="@{/js/biblioteca/funcionario/edit.js}"></script>
 
 </body>
