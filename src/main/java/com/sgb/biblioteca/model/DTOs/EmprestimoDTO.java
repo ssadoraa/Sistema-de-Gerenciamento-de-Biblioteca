@@ -1,6 +1,7 @@
 package com.sgb.biblioteca.model.DTOs;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class EmprestimoDTO {
     LocalDate dataDevolucao;
 
     public String prazo() {
-        int diasRestantes = LocalDate.now().until(dataDevolucao).getDays();
+        long diasRestantes = ChronoUnit.DAYS.between(LocalDate.now(), dataDevolucao);
 
         if (diasRestantes < 0) {
             return "<span class=\"text-danger fw-bold\">Atrasado</span>";
