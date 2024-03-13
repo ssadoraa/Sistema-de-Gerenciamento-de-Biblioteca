@@ -6,8 +6,8 @@
     <title>Cadastro Empréstimo</title>
 
     <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-    <link rel="stylesheet" href="../../../static/css/geral/select2.css" th:href="@{/css/geral/select2.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" media="screen">
+    <link href="../../../static/css/geral/select2.css" th:href="@{/css/geral/select2.css}" rel="stylesheet" media="screen">
     <link href="../../../static/css/geral/cursor.css" th:href="@{/css/geral/cursor.css}" rel="stylesheet" media="screen">
     <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen">
     <link href="../../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen">
@@ -30,14 +30,14 @@
             <div class="form-group">
                 <label class="fw-bold" for="livroId">Livro:</label>
                 <select id="livroId" name="livroId" class="form-control" required>
-                    <option th:selected="${emprestimo.livroId == null}" th:text="${emprestimo.livroId == null ? 'Selecione um livro' : livro.titulo + ' - ' + livro.nome}" th:value="${emprestimo.livroId == null ? null : livro.id}">
+                    <option th:selected="${emprestimo.livroId == null}" th:text="${emprestimo.livroId == null ? 'Selecione um livro' : livro.text}" th:value="${emprestimo.livroId == null ? null : livro.id}">
                     </option>
                 </select>
             </div>
             <div class="form-group mt-2">
                 <label class="fw-bold" for="userId">Cliente:</label>
                 <select id="userId" name="userId" class="form-control" required>
-                    <option th:selected="${emprestimo.userId == null}" th:text="${emprestimo.userId == null ? 'Selecione um cliente (pelo cpf)' : user.nome + ' - ' + user.cpf}" th:value="${emprestimo.userId == null ? null : user.id}">
+                    <option th:selected="${emprestimo.userId == null}" th:text="${emprestimo.userId == null ? 'Selecione um cliente (pelo cpf)' : user.text}" th:value="${emprestimo.userId == null ? null : user.id}">
                     </option>
                 </select>
             </div>
@@ -45,6 +45,7 @@
                 <label class="fw-bold" for="funcionarioId">Funcionário:</label>
                 <span th:text="${funcionario.nome}" id="funcionario" class="form-control blocked" readonly></span>
                 <input type="hidden" id="funcionarioId" name="funcionarioId" th:value="${funcionario.id}">
+
             </div>
 
             <hr class="mt-4">
@@ -63,7 +64,8 @@
             <div class="form-group mt-3 d-flex justify-content-end ">
                 <input type="submit" value="Salvar" class="btn btn-primary m-2 radius">
                 <input th:if="${emprestimo.id == null}" type="reset" value="Limpar" class="btn btn-dark m-2 radius">
-                <a class="voltar btn btn-secondary m-2 radius" href="#" title="Cancelar cadastro" th:href="@{/emprestimo}">Cancelar</a>
+                <a class="voltar btn btn-secondary m-2 radius" href="list.html" title="Cancelar cadastro" 
+                th:href="${emprestimo.id != null} ? @{/emprestimo/{id}(id=${emprestimo.id})} : @{/emprestimo}">Cancelar</a>
             </div>
         </form>
     </div>
