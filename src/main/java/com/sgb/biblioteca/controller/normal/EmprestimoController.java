@@ -68,9 +68,9 @@ public class EmprestimoController {
     
     @PostMapping("/new")
     public String post(Emprestimo emprestimo, RedirectAttributes redirectAttributes){
-        emprestimoService.save(emprestimo);;
+        emprestimoService.save(emprestimo);
         redirectAttributes.addAttribute("id", emprestimo.getId());
-        return "emprestimo/list";
+        return "redirect:/emprestimo/{id}";
     }
     
     @GetMapping("/{id}")
