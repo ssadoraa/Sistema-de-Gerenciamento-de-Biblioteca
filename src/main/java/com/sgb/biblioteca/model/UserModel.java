@@ -22,11 +22,11 @@ public class UserModel {
     @NonNull private String email;
     @NonNull private String username;
     @NonNull private String password;
-    @NonNull private UserRole role;
+    @NonNull private Role role;
     @NonNull private LocalDate dataCadastro;
 
     public static UserModel empty() {
-        return new UserModel(null,"", null, "", "", "", "", "", "", "", UserRole.USER, LocalDate.now());
+        return new UserModel(null,"", null, "", "", "", "", "", "", "", Role.USER, LocalDate.now());
     }
 
     public void limpaFormatacao() {

@@ -2,7 +2,7 @@ package com.sgb.biblioteca.service;
 
 import com.sgb.biblioteca.dao.UserDAO;
 import com.sgb.biblioteca.model.UserModel;
-import com.sgb.biblioteca.model.UserRole;
+import com.sgb.biblioteca.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.val;
 
@@ -20,7 +20,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public void save(UserModel user){
-        user.setRole(UserRole.USER);
+        user.setRole(Role.USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.save(user);
     }
