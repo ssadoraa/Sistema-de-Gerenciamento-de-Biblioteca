@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Navbar</title>
 
-    <link rel="stylesheet" href="../../static/css/3rd/bootstrap.min.css" media="screen" th:href="@{/css/3rd/bootstrap.min.css}">
+    <link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
 
 </head>
 
@@ -52,17 +52,44 @@
                         </div>
                     </li>
                 </ul>
-                <a class="d-flex" href="#">
+                <a class="d-flex" href="#" id="menu-toogle">
                     <svg class="bi" fill="currentColor" height="26" width="26" style="margin-right: 40px;">
-                        <use th:attr="'xlink:href'=@{/images/3rd/bootstrap-icons.svg#person-circle}" xlink:href="../static/images/3rd/bootstrap-icons.svg#person-circle" />
+                        <use th:attr="'xlink:href'=@{/images/3rd/bootstrap-icons.svg#person-circle}" xlink:href="../../static/images/3rd/bootstrap-icons.svg#person-circle" />
                     </svg>
                 </a>
+
+                <div id="sidebar">
+                    <div class="container">
+                        <div class="card menu">
+                            <div class="card-header text-center">
+                                Usuário
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-form-label label">Username:</label>
+                                    <input id="username" type="text" class="form-control input blocked" disabled>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label label">Role:</label>
+                                    <input id="role" type="text" class="form-control input blocked" disabled>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label label">Email:</label>
+                                    <input id="email" type="email" class="form-control input blocked" disabled>
+                                </div>
+                                <div class="mb-3 text-center d-flex justify-content-center">
+                                    <a class="btn btn-primary btn-mini m-2 radius editar-usuario" title="Editar usuário">Editar</a>
+                                    <button class="btn btn-danger btn-mini m-2 radius" title="Sair do sistema">Sair</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <script src="../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
-    <script src="../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script type="module" src="../../static/js/script.js" th:src="@{/js/script.js}"></script>
 
 </body>
 

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
     <title>Visualizar Livro</title>
-    
-    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
-    <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen" />
-    <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
-    
+
+    <link href="../../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" media="screen" />
+
 </head>
 
 <body>
@@ -62,14 +60,14 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         </form>
         <div class="mb-3 text-end">
             <a type="submit" class="btn btn-primary m-2 radius" title="Editar Livro" href="edit.html" th:href="@{/livro/{id}/edit(id=${livro.id})}">Editar</a>
-            <a class="voltar btn btn-secondary m-2 radius" href="#" title="Voltar a listagem de livros" th:href="@{/livro}">Voltar</a>
+            <a class="btn btn-secondary m-2 radius" href="#" title="Voltar a listagem de livros" th:href="@{/livro}">Voltar</a>
         </div>
     </div>
 
     <div th:replace="~{ layout/footer :: footer}"></div>
 
-    <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
-    <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script type="module" src="../../../static/js/script.js" th:src="@{/js/script.js}"></script>
 
 </body>
+
 </html>

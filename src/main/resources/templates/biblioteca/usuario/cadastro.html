@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2 class="text-center mb-4">Cadastrar</h2>
-                <form th:action="@{/cadastro}" method="post" th:object="${user}">
+                <form th:action="@{/usuario/new}" method="post" th:object="${user}">
                     <div class="form-group">
                         <input name="nome" type="text" class="form-control" placeholder="Nome Completo" required>
                     </div>
