@@ -35,37 +35,44 @@ public class SecurityConfig {
             
 
             // Usuário
-            .requestMatchers(HttpMethod.GET, "/cadastro", "/login").permitAll()
-
+            .requestMatchers(HttpMethod.GET, "/login").permitAll()
+            .requestMatchers(HttpMethod.GET, "/usuario/new").permitAll()
+            .requestMatchers(HttpMethod.POST, "/usuario/new").permitAll()
+            .requestMatchers(HttpMethod.GET, "/usuario/{id}/edit").authenticated()
+            .requestMatchers(HttpMethod.POST, "/usuario/{id}/edit").authenticated()
+            
 
             // Funcionário
-            .requestMatchers(HttpMethod.GET,  "/funcionario", "/funcionario/{id}").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
             .requestMatchers(HttpMethod.GET, "/funcionario/new", "/funcionario/{id}/edit").hasRole(Role.STR.ADMIN)
             .requestMatchers(HttpMethod.POST, "/funcionario/new").hasRole(Role.STR.ADMIN)
-
+            .requestMatchers(HttpMethod.GET,  "/funcionario", "/funcionario/{id}", "/livro/new").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
+            
             
             // Livro
+            .requestMatchers(HttpMethod.GET,  "/livro/new", "/livro/{id}/edit").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
+            .requestMatchers(HttpMethod.POST,  "/livro/new").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
             .requestMatchers(HttpMethod.GET,  "/livro", "/livro/{id}").authenticated()
-            .requestMatchers(HttpMethod.GET, "/livro/new", "/livro/{id}/edit").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
-            .requestMatchers(HttpMethod.POST, "/livro/new").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
             
             
             // Editora
+            .requestMatchers(HttpMethod.GET,  "/editora/new", "/editora/{id}/edit").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
+            .requestMatchers(HttpMethod.POST,  "/editora/new").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
             .requestMatchers(HttpMethod.GET,  "/editora", "/editora/{id}").authenticated()
-            .requestMatchers(HttpMethod.GET, "/editora/new", "/editora/{id}/edit").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
-            .requestMatchers(HttpMethod.POST, "/editora/new").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
             
             
             // Autor
+            .requestMatchers(HttpMethod.GET,  "/autor/new", "/autor/{id}/edit").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
+            .requestMatchers(HttpMethod.POST,  "/autor/new").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
             .requestMatchers(HttpMethod.GET,  "/autor", "/autor/{id}").authenticated()
-            .requestMatchers(HttpMethod.GET, "/autor/new", "/autor/{id}/edit").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
-            .requestMatchers(HttpMethod.POST, "/autor/new").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
             
             
             // Empréstimo
+            .requestMatchers(HttpMethod.GET,  "/emprestimo/new", "/emprestimo/{id}/edit").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
+            .requestMatchers(HttpMethod.POST,  "/emprestimo/new").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
             .requestMatchers(HttpMethod.GET,  "/emprestimo", "/emprestimo/{id}").authenticated()
-            .requestMatchers(HttpMethod.GET, "/emprestimo/new", "/emprestimo/{id}/edit").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
-            .requestMatchers(HttpMethod.POST, "/emprestimo/new").hasAnyRole(Role.STR.ADMIN, Role.STR.ATENDENTE)
+            
+            // API's
+            .requestMatchers(HttpMethod.GET,  "/api/autores", "/api/livros", "/api/editoras", "/api/users").hasAnyRole(Role.STR.ATENDENTE, Role.STR.ADMIN)
 
             ;
     }
