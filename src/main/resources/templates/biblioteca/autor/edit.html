@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Autor(a)</title>
+
+    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen">
+    <link href="../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
+
+</head>
+
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+
+    <div class="container mt-5">
+        <h2 th:text="${(autor.id == null) ? 'Cadastrar Autor(a)' : 'Editar Autor(a)'}" class="mb-4">Cadastro de Autor(a)</h2>
+
+        <form method="post" th:action="@{/autor/new}">
+
+            <input type="hidden" name="id" th:value="${autor.id}">
+
+            <div class="row">
+                <div class="col-md-7 form-group">
+                    <label class="fw-bold" for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" th:value="${autor.nome}" class="form-control" placeholder="Nome Completo..." required>
+                </div>
+                <div class="col-md-5 form-group">
+                    <label class="fw-bold" for="pseudonimo">Pseudônimo:</label>
+                    <input type="text" id="pseudonimo" name="pseudonimo" th:value="${autor.pseudonimo}" class="form-control" placeholder="Pseudônimo...">
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="dataNascimento">Data Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento" th:value="${autor.dataNascimento}" class="form-control" required>
+            </div>
+
+            <hr class="mt-4">
+
+            <div class="form-group mt-2">
+                <label class="fw-bold" for="biografia">Breve biografia:</label>
+                <textarea id="biografia" name="biografia" rows="4" th:text="${autor.biografia}" class="form-control" placeholder="Digite uma breve biografia do autor(a)..." required></textarea>
+            </div>
+
+            <div class="form-group mt-3 d-flex justify-content-end ">
+                <input type="submit" value="Salvar" class="btn btn-primary m-2 radius">
+                <input th:if="${autor.id == null}" type="reset" value="Limpar" class="btn btn-dark m-2 radius">
+                <a class="voltar btn btn-secondary m-2 radius" href="#" title="Cancelar cadastro" th:href="@{/autor}">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+    <div th:replace="~{ layout/footer :: footer}"></div>
+
+    <script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+    <script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+    <script src="../../../static/js/biblioteca/funcionario/edit.js" th:src="@{/js/biblioteca/funcionario/edit.js}"></script>
+
+</body>
+
+</html>

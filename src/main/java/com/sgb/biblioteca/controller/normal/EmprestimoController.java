@@ -1,5 +1,4 @@
 package com.sgb.biblioteca.controller.normal;
-
 import org.springframework.stereotype.Controller;
 import lombok.AllArgsConstructor;
 import lombok.val;
@@ -32,9 +31,22 @@ public class EmprestimoController {
     public ModelAndView list() {
         val emprestimos = emprestimoService.listagemEmprestimos();
         return new ModelAndView("biblioteca/emprestimo/list")
-            .addObject("emprestimos", emprestimos);
+        .addObject("emprestimos", emprestimos);
+    }
+
+    @GetMapping("/aberto")
+    public ModelAndView listAbertos() {
+        val emprestimos = emprestimoService.listagemEmprestimosAbertos();
+        return new ModelAndView("biblioteca/emprestimo/abertos/list")
+        .addObject("emprestimos", emprestimos);
     }
     
+    @GetMapping("/{id}")
+    public ModelAndView get(@PathVariable Long id) {
+        val emprestimo = emprestimoService.findEmprestimoComDependenciaById(id);
+        return new ModelAndView("biblioteca/emprestimo/get")
+            .addObject("emprestimo", emprestimo);
+    }
 
     @GetMapping("/new")
     public ModelAndView novo(){
@@ -50,7 +62,7 @@ public class EmprestimoController {
     private ModelAndView novoEdit(Emprestimo emprestimo){
         LivroAutorDTO livro = null;
         UserModel user = null;
-        UserModel funcionario = null;
+        UserModel funcionario = userService.findByUsername(userService.identificacaoLogado());
 
         if (emprestimo.getId() != null){
             livro = livroAutorDTOService.findLivroAutorDTOById(emprestimo.getLivroId());
@@ -67,15 +79,16 @@ public class EmprestimoController {
     
     @PostMapping("/new")
     public String post(Emprestimo emprestimo, RedirectAttributes redirectAttributes){
-        emprestimoService.save(emprestimo);;
+        emprestimoService.save(emprestimo);
         redirectAttributes.addAttribute("id", emprestimo.getId());
-        return "emprestimo/list";
+        return "redirect:/emprestimo/{id}";
     }
     
-    @GetMapping("/{id}")
-    public ModelAndView get(@PathVariable Long id) {
-        val emprestimo = emprestimoService.findEmprestimoComDependenciaById(id);
-        return new ModelAndView("biblioteca/emprestimo/get")
-            .addObject("emprestimo", emprestimo);
+    @PostMapping("/encerrar")
+    public String encerrar(Long id, RedirectAttributes redirectAttributes){
+        val emprestimo = emprestimoService.encerrarEmprestimo(id);
+        redirectAttributes.addAttribute("id", emprestimo.getId());
+        redirectAttributes.addFlashAttribute("mensagem", "Empréstimo encerrado com sucesso!");
+        return "redirect:/emprestimo/{id}";
     }
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Autores</title>
+    
+    <link href="../../../static/css/3rd/bootstrap.min.css" th:href="@{/css/3rd/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../../static/css/geral/footer.css" th:href="@{/css/geral/footer.css}" rel="stylesheet" media="screen" />
+    <link href="../../../static/css/geral/button.css" th:href="@{/css/geral/button.css}" rel="stylesheet" media="screen" />
+
+</head>
+<body>
+    <div th:replace="~{ layout/navbar :: navbar}"></div>
+    <div class="container mt-5">
+        <h2>Listagem de Autores</h2>
+        <p></p>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col">Nome</th>
+                        <th scope="col">Pseudônimo</th>
+                        <th scope="col">Nacionalidade</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-light" th:each="autor : ${autores}">
+                        <td><span th:text="${autor.nome}">Exemplo de nome</span></td>
+                        <td><span th:text="${autor.pseudonimo?:'Não possui'}">Exemplo de pseudônimo</span></td>
+                        <td><span>Nacionalidade</span></td>
+                        <td>
+                            <a class="btn btn-info btn-sm" title="Ver autor"
+                            href="get.html" th:href="@{autor/{id}(id=${autor.id})}">
+                            Ver
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>     
+        </div>
+    </div>
+    
+    <div th:replace="~{ layout/paginacao :: paginacao}"></div>
+    <div th:replace="~{ layout/footer :: footer}"></div>
+
+<script src="../../../static/js/3rd/popper.min.js" th:src="@{/js/3rd/popper.min.js}"></script>
+<script src="../../../static/js/3rd/bootstrap.min.js" th:src="@{/js/3rd/bootstrap.min.js}"></script>
+
+</body>
+</html>

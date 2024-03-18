@@ -2,6 +2,7 @@ package com.sgb.biblioteca.model.comDependencias;
 
 import java.time.LocalDate;
 import com.sgb.biblioteca.model.Livro;
+import com.sgb.biblioteca.model.Situacao;
 import com.sgb.biblioteca.model.UserModel;
 
 public record EmprestimoComDependencia(
@@ -10,6 +11,7 @@ public record EmprestimoComDependencia(
     UserModel user,
     UserModel funcionario,
     LocalDate dataEmprestimo,
-    LocalDate dataDevolucao) {
+    LocalDate dataDevolucao,
+    Situacao situacao) {
 
 }

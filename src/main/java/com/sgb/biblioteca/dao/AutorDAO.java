@@ -12,4 +12,8 @@ public interface AutorDAO extends CrudRepository<Autor, Long> {
     @Query("SELECT a.id, a.nome FROM biblioteca.autor a "
            + " WHERE a.nome LIKE CONCAT('%', :nome, '%')")
     List<Autor> autorQuery(String nome);
+    
+    @Query("SELECT a.id, a.nome FROM biblioteca.autor a "
+           + " ORDER BY a.nome")
+    List<Autor> findAllAutores();
 }

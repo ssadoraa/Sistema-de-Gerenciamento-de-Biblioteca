@@ -29,7 +29,7 @@
                     <tr class="table-light" th:each="livro : ${livros}">
                         <td><span th:text="${livro.titulo}">Exemplo de título</span></td>
                         <td><span th:text="${livro.nome}">Exemplo de Autor</span></td>
-                        <td class="text-center"><span th:text="${livro.quantidade}">10</span></td>
+                        <td class="text-center"><span th:utext="${livro.quantidadeDisponivel()}">10</span></td>
                         <td>
                             <a class="btn btn-info btn-sm" title="Ver livro" href="get.html" th:href="@{livro/{id}(id=${livro.id})}">
                                 Ver
